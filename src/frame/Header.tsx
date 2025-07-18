@@ -1,13 +1,13 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 const Header = () => (
-  <AppBar sx={{ width: `calc(100% - 76px)` }}>
+  <Box sx={{ bgcolor: 'primary.main', color: 'white' }}>
     <Toolbar>
       <Typography variant="h6" component="div">
         My App
       </Typography>
     </Toolbar>
-  </AppBar>
+  </Box>
 );
 
 export default Header;
