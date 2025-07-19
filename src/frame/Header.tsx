@@ -1,16 +1,17 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
 
-import { HEADER_HEIGHT, SIDEBAR_WIDTH, useResponsiveSidebarWidth } from './constants/layout';
+import { useResponsiveHeaderHeight, useResponsiveSidebarWidth } from './constants/layout';
 
 const Header = () => {
     const left = useResponsiveSidebarWidth();
+    const height = useResponsiveHeaderHeight();
     
     return (
         <AppBar
             position="fixed"
             sx={{
             width: `calc(100% - ${left}px)`,
-            height: HEADER_HEIGHT,
+            height: height,
             left: left,
             }}
         >

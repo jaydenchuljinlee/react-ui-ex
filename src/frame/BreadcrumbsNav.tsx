@@ -1,15 +1,17 @@
 import { Breadcrumbs, Link, Typography, Box } from '@mui/material';
-import { HEADER_HEIGHT, BREADCRUMB_HEIGHT, useResponsiveSidebarWidth } from './constants/layout';
+import { useResponsiveSidebarWidth, useResponsiveHeaderHeight, useResponsiveBreadcrumbHeight } from './constants/layout';
 
 const BreadcrumbsNav = () => {
   const left = useResponsiveSidebarWidth();
+  const top = useResponsiveHeaderHeight();
+  const height = useResponsiveBreadcrumbHeight();
   
   return (
     <Box
       sx={{
         position: 'fixed',
-        height: BREADCRUMB_HEIGHT,
-        top: HEADER_HEIGHT,
+        height: height,
+        top: top,
         left: left,
         right: 0,
         padding: '16px 24px',

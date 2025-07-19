@@ -1,15 +1,16 @@
 import { Box } from '@mui/material';
-import { HEADER_HEIGHT, BREADCRUMB_HEIGHT, useResponsiveSidebarWidth } from './constants/layout';
+import { useResponsiveMainTop, useResponsiveSidebarWidth } from './constants/layout';
 
 const MainContent = () => {
     const left = useResponsiveSidebarWidth();
+    const top = useResponsiveMainTop();
 
     return (
         <Box
           component="main"
           sx={{
             position: 'fixed',
-            top: HEADER_HEIGHT + BREADCRUMB_HEIGHT,
+            top: top,
             left: `${left}px`,
             right: 0,
             bottom: 0,

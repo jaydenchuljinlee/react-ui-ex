@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { SIDEBAR_WIDTH, useResponsiveSidebarWidth } from './constants/layout';
+import { useResponsiveSidebarWidth } from './constants/layout';
 
 const Footer = () => {
     const left = useResponsiveSidebarWidth();
