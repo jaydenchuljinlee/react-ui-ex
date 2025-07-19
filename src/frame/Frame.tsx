@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { Box, CssBaseline, Drawer } from '@mui/material';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
 import BreadcrumbsNav from './BreadcrumbsNav';
-import MainContent from './main';
+import MainContent from './Main';
+import Footer from './Footer';
+
+
 
 const Frame = ({ children }: { children: React.ReactNode }) => {
     const sidebarRef = useRef<HTMLDivElement>(null);
@@ -27,25 +29,14 @@ const Frame = ({ children }: { children: React.ReactNode }) => {
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh' }}>
             <CssBaseline />
-            <Drawer ref={sidebarRef} variant="permanent" anchor="left" sx={{ width: sidebarWidth, flexShrink: 0 }}>
-                <Sidebar  />
-            </Drawer>
+            <Sidebar />
             {/* <Box component="aside" sx={{ width: sidebarWidth, flexShrink: 0 }}>
                 
             </Box> */}
-            <Box sx={{ display: 'flex', flexGrow: 1, flexDirection: 'column' }}>
-                <Box component="header">
-                    <Header/>
-                </Box>
-                
-                
-                {/* <Box sx={{ display: 'flex', flex: 1 }}>
-                    <BreadcrumbsNav />
-                    <MainContent />
-                </Box> */}
-                <Footer />
-            </Box>
-        
+            <Header/>
+            <BreadcrumbsNav />
+            <MainContent />
+            <Footer />
         </Box>
     )
 };

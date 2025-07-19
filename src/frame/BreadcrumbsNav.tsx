@@ -1,15 +1,29 @@
-import { Breadcrumbs, Link, Typography } from '@mui/material';
+import { Breadcrumbs, Link, Typography, Box } from '@mui/material';
+import { SIDEBAR_WIDTH, HEADER_HEIGHT, BREADCRUMB_HEIGHT } from './constants/layout';
 
 const BreadcrumbsNav = () => (
-  <Breadcrumbs aria-label="breadcrumb" sx={{ width: `100%`, marginLeft: `76px`, paddingLeft: `24px`, marginTop: '80px'}}>
-    <Link underline="hover" color="inherit" href="/">
-      Home
-    </Link>
-    <Link underline="hover" color="inherit" href="/section">
-      Section
-    </Link>
-    <Typography color="text.primary">Current</Typography>
-  </Breadcrumbs>
+  <Box
+    sx={{
+      position: 'fixed',
+      height: BREADCRUMB_HEIGHT,
+      top: HEADER_HEIGHT,
+      left: SIDEBAR_WIDTH,
+      right: 0,
+      padding: '16px 24px',
+      bgcolor: 'background.default',
+      // zIndex: (theme) => theme.zIndex.appBar - 1, // AppBar보다 아래
+    }}
+  >
+    <Breadcrumbs aria-label="breadcrumb">
+      <Link underline="hover" color="inherit" href="/">
+        Home
+      </Link>
+      <Link underline="hover" color="inherit" href="/section">
+        Section
+      </Link>
+      <Typography color="text.primary">Current</Typography>
+    </Breadcrumbs>
+  </Box>
 );
 
 export default BreadcrumbsNav;
