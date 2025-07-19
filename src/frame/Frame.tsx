@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, CssBaseline, Drawer } from '@mui/material';
 import Header from './Header';
-import Sidebar from './Sidebar';
+import Sidebar2 from './Sidebar2';
 import BreadcrumbsNav from './BreadcrumbsNav';
 import MainContent from './Main';
 import Footer from './Footer';
@@ -29,7 +29,7 @@ const Frame = ({ children }: { children: React.ReactNode }) => {
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh' }}>
             <CssBaseline />
-            <Sidebar />
+            <Sidebar2 />
             {/* <Box component="aside" sx={{ width: sidebarWidth, flexShrink: 0 }}>
                 
             </Box> */}
