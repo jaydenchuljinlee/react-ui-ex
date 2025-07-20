@@ -1,0 +1,79 @@
+:root {
+    --carotene-spacing-4: 16px;
+    --carotene-spacing-32: 8rem;
+    --carotene-spacing-20: 5rem;
+    --carotene-color-bg-brand-solid: #f60;
+    --carotene-color-fg-on-solid: #ffffff;
+    --carotene-duration-2: .1s;
+    --carotene-timing-function-standard: cubic-bezier(.35, 0, .35, 1);
+
+    --carotene-font-size-100: .875rem;
+    --carotene-body-line-height-small: 1.25rem;
+    --carotene-font-weight-semibold: 600;
+    --carotene-uniform-height-medium: 2rem;
+    --carotene-spacing-3: .75rem;
+    --carotene-spacing-0\.5: .125rem;
+    --carotene-radius-1: .25rem;
+  }
+
+  .main-top {
+    padding-top: var(--carotene-spacing-4);
+  }
+
+  .app-download-btn--color {
+    background-color: var(--carotene-color-bg-brand-solid);
+    color: var(--carotene-color-fg-on-solid);
+  }
+
+  .app-download-btn--layout {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    vertical-align: top;
+    transition-duration: var(--carotene-duration-2);
+    transition-timing-function: var(--carotene-timing-function-standard);
+    transition-property: background-color, color;
+  }
+
+  .app-download-btn--font {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-semibold);
+    height: var(--carotene-uniform-height-medium);
+    padding-inline: var(--carotene-spacing-3);
+    gap: var(--carotene-spacing-0\.5);
+    border-radius: var(--carotene-radius-1);
+  }
+
+
+  .main-top {
+    margin-top: var(--carotene-spacing-32);
+  }
+
+  @media screen and (min-width: 1200px) {
+    .pl_20_large {
+        padding-left: var(--carotene-spacing-20);
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .pr_20_large {
+        padding-right: var(--carotene-spacing-20);
+    }
+  }
+
+  .pb_4_base {
+    padding-bottom: var(--carotene-spacing-4);
+  }
+
+  .pt_4_base {
+    padding-top: var(--carotene-spacing-4);
+  }
+  
+  .main_h2_font {
+    font-size: 38px;
+    text-align: center;
+  }
