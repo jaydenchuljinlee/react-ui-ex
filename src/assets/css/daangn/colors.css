@@ -1,0 +1,13 @@
+:root {
+    --carotene-color-bg-brand-solid: #f60;
+    --carotene-color-fg-on-solid: #ffffff;
+    --carotene-color-bg-neutral-inverted: #2a3038;
+    --carotene-color-fg-neutral-inverted: #fff;
+    --carotene-color-stroke-field: #dcdee3;
+    --carotene-color-palette-gray-900: #2a3038;
+    --carotene-color-fg-neutral-subtle:#868b94;
+}
+
+.neutralSubtle {
+    color: var(--carotene-color-fg-neutral-subtle);
+}

@@ -1,0 +1,20 @@
+.display_flex_base {
+    display: flex;
+}
+
+.justifyContent_center_base {
+    justify-content: center;
+  }
+  
+.alignItems_center_base {
+    align-items: center;
+}
+
+.justifyContent_spaceBetween_base {
+    justify-content: space-between;
+}
+
+.display_inlineFlex_base {
+    display: inline-flex
+;
+}

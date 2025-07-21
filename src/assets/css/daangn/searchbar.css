@@ -1,0 +1,106 @@
+@import './colors.css';
+@import './spacing.css';
+@import './border.css';
+@import './typography.css';
+@import './size.css';
+
+.search-btn {
+    font-size: 16px;
+    height: 48px;
+    background-color: var(--carotene-color-bg-neutral-inverted);
+    color: var(--carotene-color-fg-neutral-inverted);
+    font-weight: var(--carotene-font-weight-semibold);
+    color: var(--carotene-color-fg-neutral-inverted);
+
+    border-radius: 100px;
+    transition: background-color .15s;
+    appearance: none;
+    border: none;
+}
+
+.search-btn-font {
+    display: block;
+    overflow: hidden;
+    min-width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-line-clamp: var(--carotene-max-lines);
+}
+
+@media screen and (min-width: 1200px) {
+    .search-btn-font {
+        --carotene-max-lines: var(--carotene-max-lines-large);
+    }
+}
+
+.search-btn-svg {
+    width: 18px;
+    height: 18px;
+}
+
+.search-form {
+    height: 48px;
+    border: 1px solid var(--carotene-color-stroke-field);
+    display: flex;
+    align-items: center;
+    padding-left: var(--carotene-spacing-5);
+    border-radius: var(--carotene-radius-full);
+}
+
+.search_area {
+    flex-grow: 1;
+}
+
+.search_input {
+    height: 48px;
+    padding: var(--carotene-spacing-3) var(--carotene-spacing-12) var(--carotene-spacing-3) var(--carotene-spacing-4);
+
+    width: 100%;
+    line-height: 115%;
+    font-size: var(--carotene-font-size-200);
+    color: var(--carotene-color-palette-gray-900);
+    background: none;
+}
+
+.search_action_btn {
+    position: absolute;
+    width: var(--carotene-size-7);
+    height: var(--carotene-size-7);
+    display: flex;
+    right: 12px;
+    transform: translateY(-50%);
+    transition: background-color;
+    transition-duration: .15s;
+    background-color: var(--carotene-color-bg-neutral-inverted);
+    border-radius: var(--carotene-radius-full);
+}
+
+@media screen and (min-width: 992px) {
+    .search_area {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .search_bar_width {
+        max-width: 754px;
+    }
+}
+
+.popular_search_word_wrap {
+    padding-block: 12px;
+    white-space: nowrap;
+}
+
+.popular_search_word_title {
+    display: block;
+
+}
+
+@media screen and (min-width: 992px) {
+    .popular_search_word_atag {
+        height: 16px;
+        border: 0;
+        color: var(--carotene-color-fg-neutral-muted);
+    }
+}
