@@ -65,3 +65,10 @@
 .pt_1\.5_base {
     padding-top: var(--carotene-spacing-1\.5);
 }
+
+
+@media screen and (min-width: 768px) {
+    .mr_1\.5_small {
+        margin-right: var(--carotene-spacing-1\.5);
+    }
+}

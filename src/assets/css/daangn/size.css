@@ -18,3 +18,14 @@
     --carotene-size-24: 6rem;
     --carotene-size-32: 8rem;
 }
+
+.wv2v230 {
+    max-width: 1400px;
+    margin-inline: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .width_8_small {
+        width: var(--carotene-size-8);
+    }
+}

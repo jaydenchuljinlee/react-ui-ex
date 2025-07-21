@@ -15,6 +15,18 @@
 }
 
 .display_inlineFlex_base {
-    display: inline-flex
+    display: inline-flex;
+}
+
+@media screen and (min-width: 768px) {
+    .display_none_small {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .display_inlineFlex_small {
+        display: inline-flex
 ;
+    }
 }
