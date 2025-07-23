@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import DaangnHeader from '../header/DaangnHeader';
 import SearchBarMain from './searchbar/SarchBarMain';
+import CategoryView from './CategoryView';
 import { useResponsiveFullWidth } from '../constants/layout';
 
 import '../../assets/css/daangn/daangn.css';
@@ -18,7 +19,6 @@ const DaangnMain = () => {
         height: '100vh',
         bgcolor: 'background.default',
         display: 'flex',
-        // alignItems: 'center',
         justifyContent: 'center',
       }}
     >
@@ -26,13 +26,9 @@ const DaangnMain = () => {
         display: 'block'
       }}>
         <DaangnHeader />
-        <main
-          // className="main-top"
-          style={{
-            // width: width,
-          }}
-        >
+        <main>
           <SearchBarMain />
+          <CategoryView />
         </main>
       </div>
       

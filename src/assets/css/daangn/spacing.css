@@ -10,6 +10,7 @@
 --carotene-spacing-2\.5: .625rem;
 --carotene-spacing-1\.5: .375rem;
 --carotene-spacing-16: 4rem;
+--carotene-spacing-8: 2rem;
 }
 
 .mr_4_base {
@@ -71,4 +72,34 @@
     .mr_1\.5_small {
         margin-right: var(--carotene-spacing-1\.5);
     }
+}
+
+@media screen and (min-width: 768px) {
+    .mt_12_small {
+        margin-top: var(--carotene-spacing-12);
+    }
+}
+
+.gap_4_base {
+    gap: var(--carotene-spacing-4);
+}
+
+.gap_8_base {
+    gap: var(--carotene-spacing-8);
+}
+
+.pl_4_base {
+    padding-left: var(--carotene-spacing-4);
+}
+
+.pr_4_base {
+    padding-right: var(--carotene-spacing-4);
+}
+
+.pb_3_base {
+    padding-bottom: var(--carotene-spacing-3);
+}
+
+.pt_3_base {
+    padding-top: var(--carotene-spacing-3);
 }

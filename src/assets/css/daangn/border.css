@@ -1,4 +1,14 @@
 :root {
     --carotene-radius-full: 9999px;
     --carotene-color-stroke-field: #dcdee3;
+    --carotene-radius-3: .75rem;
+    --carotene-color-bg-neutral: #f3f4f5;
+}
+
+.borderRadius_3_base {
+    border-radius: var(--carotene-radius-3);
+}
+
+.backgroundColor_neutral {
+    background-color: var(--carotene-color-bg-neutral);
 }

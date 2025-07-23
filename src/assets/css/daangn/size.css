@@ -29,3 +29,11 @@
         width: var(--carotene-size-8);
     }
 }
+
+.full_width {
+    width: 100%;
+}
+
+.lineHeight_body\.medium_base {
+    line-height: var(--carotene-body-line-height-medium);
+}

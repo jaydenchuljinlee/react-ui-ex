@@ -1,0 +1,9 @@
+.category_view_wrap {
+    display: grid;
+}
+
+@media screen and (min-width: 1200px) {
+    .category_view_wrap {
+        max-width: 900px;
+    }
+}

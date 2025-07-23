@@ -6,8 +6,13 @@
     --carotene-color-stroke-field: #dcdee3;
     --carotene-color-palette-gray-900: #2a3038;
     --carotene-color-fg-neutral-subtle:#868b94;
+    --carotene-color-fg-neutral: #2a3038;
 }
 
 .neutralSubtle {
     color: var(--carotene-color-fg-neutral-subtle);
+}
+
+.color_neutral {
+    color: var(--carotene-color-fg-neutral);
 }

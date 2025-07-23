@@ -1,10 +1,12 @@
 @import './spacing.css';
 @import './colors.css';
 @import './typography.css';
-@import './searchbar.css';
 @import './border.css';
 @import './size.css';
 @import './display.css';
+
+@import './searchbar.css';
+@import './categoryview.css';
 
 .main-top {
   padding-top: var(--carotene-spacing-4);

@@ -8,3 +8,11 @@
 .fontSize_100_base {
     font-size: var(--carotene-font-size-100);
 }
+
+.fontSize_200_base {
+    font-size: var(--carotene-font-size-200);
+}
+
+.fontWeight_semibold {
+    font-weight: var(--carotene-font-weight-semibold);
+}
