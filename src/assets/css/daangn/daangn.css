@@ -231,3 +231,18 @@ h2 {
   font-weight: bold;
   unicode-bidi: isolate;
 }
+
+body * {
+  -webkit-tap-highlight-color: initial;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+*, :before, :after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}

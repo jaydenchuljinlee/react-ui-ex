@@ -27,8 +27,10 @@ const DaangnMain = () => {
       }}>
         <DaangnHeader />
         <main>
-          <SearchBarMain />
-          <CategoryView />
+          <div className="wv2v230 pl_20_large pr_20_large pb_4_base pt_4_base">
+            <SearchBarMain />
+            <CategoryView />
+          </div>
         </main>
       </div>
       

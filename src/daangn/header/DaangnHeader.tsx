@@ -15,7 +15,6 @@ const Header = () => {
             }}
             >
             <div
-                className="pl_20_large pr_20_large pb_4_base pt_4_base"
                 style={{
                     display: 'flex',
                     justifyContent: 'space-between',
