@@ -3,6 +3,7 @@
     --carotene-color-stroke-field: #dcdee3;
     --carotene-radius-3: .75rem;
     --carotene-color-bg-neutral: #f3f4f5;
+    --carotene-radius-1: .25rem;
 }
 
 .borderRadius_3_base {
