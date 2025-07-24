@@ -26,10 +26,8 @@
     margin-inline: auto;
 }
 
-@media screen and (min-width: 768px) {
-    .width_8_small {
-        width: var(--carotene-size-8);
-    }
+.width_5_base {
+    width: var(--carotene-size-5);
 }
 
 .full_width {
@@ -38,4 +36,14 @@
 
 .lineHeight_body\.medium_base {
     line-height: var(--carotene-body-line-height-medium);
+}
+
+.height_6_base {
+    height: var(--carotene-size-6);
+}
+
+@media screen and (min-width: 768px) {
+    .width_8_small {
+        width: var(--carotene-size-8);
+    }
 }

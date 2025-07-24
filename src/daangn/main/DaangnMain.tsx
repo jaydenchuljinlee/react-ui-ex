@@ -19,27 +19,6 @@ const DaangnMain = () => {
           </div>
         </main>
     </div>
-    // <Box
-    //   sx={{
-    //     position: 'fixed',
-    //     top: 0,
-    //     left: 0,
-    //     width: '100%',
-    //     height: '100vh',
-    //     bgcolor: 'background.default',
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //   }}
-    // >
-      
-    //   <div style={{
-    //     display: 'block'
-    //   }}>
-        
-        
-    //   </div>
-      
-    // </Box>
   );
 };
 

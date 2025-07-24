@@ -21,7 +21,6 @@
 }
 
 .main_body {
-  width: 2000px;
   margin: 0;
   line-height: inherit;
 }
@@ -76,14 +75,8 @@
   width: 100%;
 }
 
-@media screen and (min-width: 992px) {
-  .responsive-block {
-      display: block;
-  }
-}
-
-.right-border {
-  border-right: 1px solid var(--carotene-color-stroke-field);
+.cursor_pointer {
+  cursor: pointer;
 }
 
 button, input:where([type=button]), input:where([type=reset]), input:where([type=submit]) {
@@ -120,15 +113,8 @@ button, input:where([type=button]), input:where([type=reset]), input:where([type
   top: 50%;
 }
 
-
-
-.full-width-mx-auto {
-  width: 100%;
-  margin: 0 auto;
-}
-
 @media screen and (min-width: 992px) {
-  .dispay_none {
+  .display_none {
       display: none;
   }
 }

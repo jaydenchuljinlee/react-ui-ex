@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.display_none_base {
+    display: none;
+}
+
 .display_flex_base {
     display: flex;
 }
@@ -34,6 +38,10 @@
     align-items: flex-start;
 }
 
+.flexShrink_0_base {
+    flex-shrink: 0;
+}
+
 @media screen and (min-width: 768px) {
     .display_none_small {
         display: none;
@@ -42,7 +50,6 @@
 
 @media screen and (min-width: 768px) {
     .display_inlineFlex_small {
-        display: inline-flex
-;
+        display: inline-flex;
     }
 }
