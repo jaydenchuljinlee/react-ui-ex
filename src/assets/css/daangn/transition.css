@@ -1,0 +1,4 @@
+#root {
+    --carotene-duration-2: .1s;
+    --carotene-timing-function-standard: cubic-bezier(.35, 0, .35, 1);
+}

@@ -1,3 +1,7 @@
+.position_relative_base {
+    position: relative;
+}
+
 .display_flex_base {
     display: flex;
 }

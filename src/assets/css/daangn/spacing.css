@@ -11,10 +11,7 @@
 --carotene-spacing-1\.5: .375rem;
 --carotene-spacing-16: 4rem;
 --carotene-spacing-8: 2rem;
-}
-
-.mr_4_base {
-    margin-right: var(--carotene-spacing-4);
+--carotene-spacing-10: 2.5rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -41,6 +38,14 @@
     }
 }
 
+
+
+@media screen and (min-width: 768px) {
+    .mb_12_small {
+        margin-bottom: var(--carotene-spacing-12);
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .mb_16_large {
         margin-bottom: var(--carotene-spacing-16);
@@ -57,14 +62,44 @@
     margin-top: var(--carotene-spacing-12);
 }
 
-@media screen and (min-width: 768px) {
-    .mb_12_small {
-        margin-bottom: var(--carotene-spacing-12);
-    }
-}
-
 .pt_1\.5_base {
     padding-top: var(--carotene-spacing-1\.5);
+}
+
+.pl_0_base {
+    padding-left: 0;
+}
+
+.pr_0_base {
+    padding-right: 0;
+}
+
+.pb_0_base {
+    padding-bottom: 0;
+}
+
+.p_0_base {
+    padding: 0;
+}
+
+.pr_2\.5_base {
+    padding-right: var(--carotene-spacing-2\.5);
+}
+
+.mr_1_base {
+    margin-right: var(--carotene-spacing-1);
+}
+
+.ml_1_base {
+    margin-left: var(--carotene-spacing-1);
+}
+  
+.mr_4_base {
+    margin-right: var(--carotene-spacing-4);
+}
+  
+.mr_4_base {
+    margin-right: var(--carotene-spacing-4);
 }
 
 
@@ -103,3 +138,57 @@
 .pt_3_base {
     padding-top: var(--carotene-spacing-3);
 }
+
+
+@media screen and (min-width: 768px) {
+    .pl_10_small {
+        padding-left: var(--carotene-spacing-10);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .pl_16_medium {
+        padding-left: var(--carotene-spacing-16);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .pl_20_large {
+        padding-left: var(--carotene-spacing-20);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .pr_10_small {
+        padding-right: var(--carotene-spacing-10);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .pr_16_medium {
+        padding-right: var(--carotene-spacing-16);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .pr_20_large {
+        padding-right: var(--carotene-spacing-20);
+    }
+}
+
+.pb_4_base {
+    padding-bottom: var(--carotene-spacing-4);
+}
+
+.pt_4_base {
+    padding-top: var(--carotene-spacing-4);
+}
+
+.top_0 {
+    top: 0;
+}
+
+.zIndex_2 {
+    z-index: 2;
+}
+

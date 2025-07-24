@@ -7,6 +7,9 @@
     --carotene-color-palette-gray-900: #2a3038;
     --carotene-color-fg-neutral-subtle:#868b94;
     --carotene-color-fg-neutral: #2a3038;
+    --carotene-color-palette-gray-200: #f3f4f5;
+    --carotene-color-bg-layer-default: #fff;
+
 }
 
 .neutralSubtle {
@@ -15,4 +18,8 @@
 
 .color_neutral {
     color: var(--carotene-color-fg-neutral);
+}
+
+.backgroundColor_layerDefault {
+    background-color: var(--carotene-color-bg-layer-default);
 }

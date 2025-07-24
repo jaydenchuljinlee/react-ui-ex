@@ -81,10 +81,39 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .search_bar_width {
+        max-width: 608px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .search_bar_width {
+        max-width: 726px;
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .search_bar_width {
         max-width: 754px;
     }
+}
+
+
+.search_bar_width {
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 992px) {
+    .searchbar_input_wrap {
+        overflow: hidden;
+    }
+}
+
+.searchbar_input_wrap {
+    flex: 1;
+
 }
 
 .popular_search_word_wrap {
