@@ -1,15 +1,20 @@
 :root {
-    --carotene-color-bg-brand-solid: #f60;
+    
     --carotene-color-fg-on-solid: #ffffff;
-    --carotene-color-bg-neutral-inverted: #2a3038;
+    --carotene-color-fg-neutral-muted: #555d6d;
     --carotene-color-fg-neutral-inverted: #fff;
-    --carotene-color-stroke-field: #dcdee3;
-    --carotene-color-palette-gray-900: #2a3038;
     --carotene-color-fg-neutral-subtle:#868b94;
     --carotene-color-fg-neutral: #2a3038;
+
     --carotene-color-palette-gray-200: #f3f4f5;
+    --carotene-color-palette-gray-900: #2a3038;
+
+    --carotene-color-stroke-field: #dcdee3;
+    
+    --carotene-color-bg-brand-solid: #f60;
+    --carotene-color-bg-neutral-inverted: #2a3038;
     --carotene-color-bg-layer-default: #fff;
-    --carotene-color-fg-neutral-muted: #555d6d;
+    --carotene-color-bg-layer-elevated: #fff;
 
 }
 
@@ -21,10 +26,14 @@
     color: var(--carotene-color-fg-neutral);
 }
 
+.neutralMuted {
+    color: var(--carotene-color-fg-neutral-muted);
+}
+
 .backgroundColor_layerDefault {
     background-color: var(--carotene-color-bg-layer-default);
 }
 
-.neutralMuted {
-    color: var(--carotene-color-fg-neutral-muted);
+.backgroundColor_layerElevated {
+    background-color: var(--carotene-color-bg-layer-elevated);
 }

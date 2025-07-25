@@ -4,6 +4,12 @@
 @import './typography.css';
 @import './size.css';
 
+@import './searchbar.css';
+
+:root {
+    --carotene-z-index-modal: 300;
+}
+
 .search_btn {
     font-size: 16px;
     height: 48px;
@@ -290,4 +296,15 @@
     padding-inline: 14px;
 }
 
+.zIndex_modal {
+    z-index: var(--carotene-z-index-modal);
+}
+
+[dir="ltr" i] {
+    unicode-bidi: isolate;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
 

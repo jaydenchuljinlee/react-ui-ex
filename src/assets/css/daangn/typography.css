@@ -1,9 +1,13 @@
 :root {
     --carotene-font-size-100: 0.875rem;
-    --carotene-body-line-height-small: 1.25rem;
-    --carotene-font-weight-semibold: 600;
     --carotene-font-size-200: 1rem;
     
+    --carotene-body-line-height-small: 1.25rem;
+    
+    
+    
+    --carotene-font-weight-regular: 400;
+    --carotene-font-weight-semibold: 600;
 }
 
 .fontSize_100_base {

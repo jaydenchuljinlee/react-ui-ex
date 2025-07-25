@@ -1,8 +1,34 @@
+import { useState, useEffect, useRef } from 'react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import type { SearchbarProp } from '../../typescript/searchbar/sarchbar';
 
 const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
+    const [value, setValue] = useState('중고거래');
+    const [isOpen, setIsOpen] = useState(false);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    const toggleDialog = () => {
+        setIsOpen((prev) => !prev);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                wrapperRef.current &&
+                !wrapperRef.current.contains(event.target as Node)
+            ) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+    
     return (
-        <div className="search_bar_width display_flex_base full_width mx_auto">
+        <div ref={wrapperRef} className="search_bar_width display_flex_base full_width mx_auto">
             <div className="mr_4_base display_block_medium">
                 <button className="pl_4_base pr_4_base display_flex_base search_btn alignItems_center_base" data-gtm="gnb_location" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rb:" data-state="closed">
                     <svg className="search_btn_svg mr_1_base" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24">
@@ -16,22 +42,42 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
             </div>
             <div className="full_width searchbar_input_wrap">
                 <form className="search_form">
-                    <button className="searchbar_category_btn_small flexShrink_0_base searchbar_category_btn_right_border cursor_pointer" aria-label="검색하려는 서비스를 선택하세요" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:re:" data-state="closed">
-                        <div className="searchbar_category_btn_div display_flex_base justifyContent_spaceBetween_base alignItems_center_base gap_0.5_base pr_2.5_base height_6_base neutralMuted">
-                            <span>중고거래</span>
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" aria-hidden="true">
-                                <g><path d="M8.17379 8C6.46508 8 5.54326 10.0042 6.65527 11.3016L10.4811 15.765C11.2792 16.6962 12.7199 16.6962 13.5181 15.765L17.3439 11.3016C18.4559 10.0042 17.5341 8 15.8253 8H8.17379Z" fill="currentColor"></path></g>
-                            </svg>
-                        </div>
-                    </button>
-                    <button className="searchbar_category_btn_large searchbar_category_btn_right_border flexShrink_0_base cursor_pointer" aria-label="검색하려는 서비스를 선택하세요" type="button" id="radix-:rh:" aria-haspopup="menu" aria-expanded="false" data-state="closed" >
-                        <div className="searchbar_category_btn_div display_flex_base justifyContent_spaceBetween_base alignItems_center_base gap_0.5_base pr_2.5_base height_6_base neutralMuted">
-                            <span>중고거래</span>
-                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" aria-hidden="true">
-                                <g><path d="M8.17379 8C6.46508 8 5.54326 10.0042 6.65527 11.3016L10.4811 15.765C11.2792 16.6962 12.7199 16.6962 13.5181 15.765L17.3439 11.3016C18.4559 10.0042 17.5341 8 15.8253 8H8.17379Z" fill="currentColor"></path></g>
-                            </svg>
-                        </div>
-                    </button>
+                    <DropdownMenu.Root>
+                        <DropdownMenu.Trigger className="searchbar_category_btn_small flexShrink_0_base searchbar_category_btn_right_border cursor_pointer">
+                            <div className="searchbar_category_btn_div display_flex_base justifyContent_spaceBetween_base alignItems_center_base gap_0.5_base pr_2.5_base height_6_base neutralMuted">
+                                <span>{value}</span>
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" aria-hidden="true">
+                                    <g><path d="M8.17379 8C6.46508 8 5.54326 10.0042 6.65527 11.3016L10.4811 15.765C11.2792 16.6962 12.7199 16.6962 13.5181 15.765L17.3439 11.3016C18.4559 10.0042 17.5341 8 15.8253 8H8.17379Z" fill="currentColor"></path></g>
+                                </svg>
+                            </div>
+                        </DropdownMenu.Trigger>
+                    </DropdownMenu.Root>
+                    
+                    <DropdownMenu.Root>
+                        <DropdownMenu.Trigger className="searchbar_category_btn_large searchbar_category_btn_right_border flexShrink_0_base cursor_pointer">
+                            <div className="searchbar_category_btn_div display_flex_base justifyContent_spaceBetween_base alignItems_center_base gap_0.5_base pr_2.5_base height_6_base neutralMuted">
+                                <span>{value}</span>
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" aria-hidden="true">
+                                    <g><path d="M8.17379 8C6.46508 8 5.54326 10.0042 6.65527 11.3016L10.4811 15.765C11.2792 16.6962 12.7199 16.6962 13.5181 15.765L17.3439 11.3016C18.4559 10.0042 17.5341 8 15.8253 8H8.17379Z" fill="currentColor"></path></g>
+                                </svg>
+                            </div>
+                        </DropdownMenu.Trigger>
+
+                        <DropdownMenu.Content className="searchbar_dropdown_wrap pl_1.5_base pr_1.5_base pb_1_base pt_1_base borderRadius_1.5_base zIndex_modal backgroundColor_layerElevated " side="bottom" align="start">
+                            <DropdownMenu.RadioGroup value={value} onValueChange={setValue}>
+                            <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="중고거래">
+                                중고거래
+                            </DropdownMenu.RadioItem>
+                            <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="부동산">
+                                부동산
+                            </DropdownMenu.RadioItem>
+                            <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="중고차">
+                                중고차
+                            </DropdownMenu.RadioItem>
+                            </DropdownMenu.RadioGroup>
+                        </DropdownMenu.Content>
+                    </DropdownMenu.Root>
+
                     {/* 검색 */}
                     <div className="search_area ml_1_relative">
                         <div className="position_relative">

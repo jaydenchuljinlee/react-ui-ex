@@ -203,3 +203,28 @@
     transform: translateY(-100%);
 }
 
+.searchbar_dropdown_wrap[data-state=open] {
+    --carotene-enter-translate-x: 0;
+    --carotene-enter-translate-y: -10%;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-enter);
+    animation-duration: var(--carotene-duration-3);
+}
+
+.searchbar_dropdown_wrap {
+    width: 99px;
+    box-shadow: 0 2px 12px #0000001a;
+}
+
+.searchbar_dropdown_item[data-state=checked] {
+    color: var(--carotene-color-fg-neutral);
+    font-weight: var(--carotene-font-weight-bold);
+}
+
+.searchbar_dropdown_item {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-regular);
+}
