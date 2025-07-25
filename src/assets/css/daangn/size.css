@@ -18,7 +18,9 @@
     --carotene-size-24: 6rem;
     --carotene-size-32: 8rem;
     --carotene-uniform-height-small: 1.5rem;
+    --carotene-body-line-height-small: 1.5rem;
     --carotene-uniform-height-medium: 2rem;
+    
 }
 
 .wv2v230 {
@@ -36,6 +38,10 @@
 
 .lineHeight_body\.medium_base {
     line-height: var(--carotene-body-line-height-medium);
+}
+
+.lineHeight_body\.small_base {
+    line-height: var(--carotene-body-line-height-small);
 }
 
 .height_6_base {

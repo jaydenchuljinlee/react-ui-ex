@@ -1,14 +1,11 @@
-import { Box } from '@mui/material';
 import DaangnHeader from '../header/DaangnHeader';
 import SearchBarMain from './searchbar/SarchBarMain';
 import CategoryView from './CategoryView';
-import { useResponsiveFullWidth } from '../constants/layout';
+import LocationSection from './LocationSection';
 
 import '../../assets/css/daangn/daangn.css';
 
 const DaangnMain = () => {
-  const width = useResponsiveFullWidth();  
-
   return (
     <div className="main_body">
       <DaangnHeader />
@@ -16,6 +13,7 @@ const DaangnMain = () => {
           <div className="wv2v230 pl_20_large pr_20_large pb_4_base pt_4_base">
             <SearchBarMain />
             <CategoryView />
+            <LocationSection />
           </div>
         </main>
     </div>

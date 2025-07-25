@@ -4,10 +4,13 @@
 @import './border.css';
 @import './size.css';
 @import './display.css';
-
-@import './searchbar.css';
-@import './categoryview.css';
 @import './transition.css';
+
+@import './main.css';
+
+/* @import './searchbar.css';
+@import './categoryview.css'; */
+
 
 .main_body {
   font-family: -apple-system, BlinkMacSystemFont, Pretendard Variable, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";

@@ -13,3 +13,7 @@
 .backgroundColor_neutral {
     background-color: var(--carotene-color-bg-neutral);
 }
+
+.borderRadius_full_base {
+    border-radius: var(--carotene-radius-full);
+}
