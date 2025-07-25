@@ -17,4 +17,6 @@ npm run dev
 - @emotion/styled
 - @mui/icons-material
 - react-router-dom
+- @radix-ui/react-dropdown-menu
+- @radix-ui/react-dialog
 ```
