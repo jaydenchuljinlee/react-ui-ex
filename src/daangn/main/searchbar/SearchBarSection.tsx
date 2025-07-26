@@ -1,10 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { categoryList } from '../data/category';
 import type { SearchbarProp } from '../../typescript/searchbar/sarchbar';
 
+
 const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
+    const categories = categoryList();
+
     const [value, setValue] = useState('중고거래');
     const [isOpen, setIsOpen] = useState(false);
+
+
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const toggleDialog = () => {
@@ -65,15 +71,13 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
 
                         <DropdownMenu.Content className="searchbar_dropdown_wrap pl_1.5_base pr_1.5_base pb_1_base pt_1_base borderRadius_1.5_base zIndex_modal backgroundColor_layerElevated " side="bottom" align="start">
                             <DropdownMenu.RadioGroup value={value} onValueChange={setValue}>
-                            <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="중고거래">
-                                중고거래
-                            </DropdownMenu.RadioItem>
-                            <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="부동산">
-                                부동산
-                            </DropdownMenu.RadioItem>
-                            <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="중고차">
-                                중고차
-                            </DropdownMenu.RadioItem>
+                            {
+                                categories.map((item) => (
+                                    <DropdownMenu.RadioItem className="searchbar_dropdown_item pl_2_base pr_2_base pb_1_base pt_1_base borderRadius_1_base cursor_pointer outline_none" value="중고거래">
+                                        {item.name}
+                                    </DropdownMenu.RadioItem>
+                                ))
+                            }
                             </DropdownMenu.RadioGroup>
                         </DropdownMenu.Content>
                     </DropdownMenu.Root>
