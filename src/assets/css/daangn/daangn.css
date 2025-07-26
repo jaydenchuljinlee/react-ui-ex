@@ -123,12 +123,6 @@ button, input:where([type=button]), input:where([type=reset]), input:where([type
   }
 }
 
-@media screen and (min-width: 992px) {
-  .display_block_medium {
-      display: block;
-  }
-}
-
 button, input, optgroup, select, textarea {
   font-family: inherit;
   font-feature-settings: inherit;

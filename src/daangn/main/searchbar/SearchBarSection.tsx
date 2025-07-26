@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as Dialog from '@radix-ui/react-dialog';
 import { categoryList } from '../data/category';
 import type { SearchbarProp } from '../../typescript/searchbar/sarchbar';
 
@@ -8,13 +9,14 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
     const categories = categoryList();
 
     const [value, setValue] = useState('중고거래');
-    const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const [isDialogOpen, setDialogOpen] = useState(false);
 
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const toggleDialog = () => {
-        setIsOpen((prev) => !prev);
+        setDialogOpen((prev) => !prev);
     };
 
     useEffect(() => {
@@ -23,7 +25,7 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
                 wrapperRef.current &&
                 !wrapperRef.current.contains(event.target as Node)
             ) {
-                setIsOpen(false);
+                setDropdownOpen(false);
             }
         };
 
@@ -35,7 +37,7 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
     
     return (
         <div ref={wrapperRef} className="search_bar_width display_flex_base full_width mx_auto">
-            <div className="mr_4_base display_block_medium">
+            <div className="mr_4_base display_block_medium display_none_base">
                 <button className="pl_4_base pr_4_base display_flex_base search_btn alignItems_center_base" data-gtm="gnb_location" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rb:" data-state="closed">
                     <svg className="search_btn_svg mr_1_base" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24">
                         <g><path d="M12.0022 0.498047C6.10466 0.498047 2.06836 4.96307 2.06836 10.4215C2.06836 14.28 4.55706 17.553 6.82617 19.7593C7.98687 20.8782 9.1371 21.7775 10.005 22.3944C10.4679 22.7331 10.9513 23.0575 11.448 23.346C11.7722 23.5342 12.2218 23.5551 12.546 23.3669C13.0436 23.078 13.5163 22.7313 13.989 22.4049C14.8569 21.7879 16.0072 20.8887 17.1679 19.7698C19.437 17.5634 21.9257 14.3009 21.9257 10.4319C21.9361 4.96307 17.8998 0.498047 12.0022 0.498047ZM12.0022 14.4787C9.76451 14.4787 7.94504 12.6592 7.94504 10.4215C7.94504 8.18374 9.76451 6.36427 12.0022 6.36427C14.24 6.36427 16.0595 8.18374 16.0595 10.4215C16.0595 12.6592 14.24 14.4787 12.0022 14.4787Z" fill="currentColor"></path></g>
@@ -48,16 +50,48 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
             </div>
             <div className="full_width searchbar_input_wrap">
                 <form className="search_form">
-                    <DropdownMenu.Root>
-                        <DropdownMenu.Trigger className="searchbar_category_btn_small flexShrink_0_base searchbar_category_btn_right_border cursor_pointer">
-                            <div className="searchbar_category_btn_div display_flex_base justifyContent_spaceBetween_base alignItems_center_base gap_0.5_base pr_2.5_base height_6_base neutralMuted">
-                                <span>{value}</span>
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" aria-hidden="true">
-                                    <g><path d="M8.17379 8C6.46508 8 5.54326 10.0042 6.65527 11.3016L10.4811 15.765C11.2792 16.6962 12.7199 16.6962 13.5181 15.765L17.3439 11.3016C18.4559 10.0042 17.5341 8 15.8253 8H8.17379Z" fill="currentColor"></path></g>
-                                </svg>
-                            </div>
-                        </DropdownMenu.Trigger>
-                    </DropdownMenu.Root>
+                    <Dialog.Root open={isDialogOpen} onOpenChange={setDialogOpen}>
+                        <Dialog.Trigger asChild>
+                            <button className="searchbar_category_btn_small flexShrink_0_base searchbar_category_btn_right_border cursor_pointer">
+                                <div className="searchbar_category_btn_div display_flex_base justifyContent_spaceBetween_base alignItems_center_base gap_0.5_base pr_2.5_base height_6_base neutralMuted">
+                                    <span>{value}</span>
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" aria-hidden="true">
+                                        <g><path d="M8.17379 8C6.46508 8 5.54326 10.0042 6.65527 11.3016L10.4811 15.765C11.2792 16.6962 12.7199 16.6962 13.5181 15.765L17.3439 11.3016C18.4559 10.0042 17.5341 8 15.8253 8H8.17379Z" fill="currentColor"></path></g>
+                                    </svg>
+                                </div>
+                            </button>
+                        </Dialog.Trigger>
+
+                        <Dialog.Portal>
+                            <Dialog.Overlay className="searchbar_dialog_overlap" style={{ outline: 'none' }} />
+                            <Dialog.Content
+                                className="searchbar_dialog_wrap "
+                                role="dialog"
+                                id="radix-:re:"
+                                aria-describedby="radix-:rg:"
+                                aria-labelledby="radix-:rf:"
+                                tabIndex={-1}
+                                style={{ pointerEvents: 'auto' }}>
+                                <div
+                                    className="pt_2.5_base pb_2.5_base"
+                                    role="dialog">
+                                    {
+                                        categories.map((item) => (
+                                            <button
+                                                type="button"
+                                                data-state={item.name === value ? 'on' : 'off'}
+                                                role="radio"
+                                                aria-checked={item.name === value ? true : false}
+                                                className="searchbar_dialog_btn pb_3 pl_4_small pr_4_small pt_4_small pb_4_small justifyContent_spaceBetween_base alignItems_center_base pl_3_base pr_3_base pt_3_base pb_3_base full_width display_flex_base color_neutral">
+                                                <span className="lineHeight_body\.medium_base fontSize_200_base">{item.name}</span>
+                                                <svg className="searchbar_dialog_svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="18" height="18" ><g><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2424 3.55704C22.7631 3.96703 22.8529 4.72151 22.4429 5.24222L10.6321 20.2422C10.4172 20.5151 10.0945 20.6816 9.74756 20.6984C9.40059 20.7153 9.06333 20.581 8.82295 20.3302L1.63376 12.8302C1.17515 12.3518 1.19122 11.5922 1.66966 11.1336C2.1481 10.675 2.90773 10.691 3.36634 11.1695L9.60035 17.673L20.5572 3.75749C20.9672 3.23679 21.7217 3.14705 22.2424 3.55704Z" fill="currentColor"></path></g></svg>
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </Dialog.Content>
+                        </Dialog.Portal>
+                    </Dialog.Root>
                     
                     <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="searchbar_category_btn_large searchbar_category_btn_right_border flexShrink_0_base cursor_pointer">
@@ -102,7 +136,7 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
                                 <ul className="display_flex_base alignItems_center_base">
                                     {
                                         popullarSearchWords.map((item, index) => (
-                                            <li key={index} className="mr_3_medium">
+                                            <li key={index} className="mr_3_medium mr_3_base">
                                                 <a data-gtm="gnb_popular_keyword" className="fontSize_100_base display_flex_base alignItems_center_base popular_search_word_atag" href="/kr/buy-sell/?in=%EC%86%A1%EB%8F%84%EB%8F%99-6543&amp;search=%EC%97%90%EC%96%B4%EC%BB%A8" data-discover="true">{item}</a>
                                             </li>
                                         ))

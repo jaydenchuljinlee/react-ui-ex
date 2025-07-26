@@ -53,3 +53,9 @@
         display: inline-flex;
     }
 }
+
+@media screen and (min-width: 992px) {
+    .display_block_medium {
+        display: block;
+    }
+}

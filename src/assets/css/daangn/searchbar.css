@@ -165,6 +165,13 @@
 
 }
 
+.popular_search_word_atag {
+    height: 16px;
+    border: 0;
+    color: var(--carotene-color-fg-neutral-muted);
+    padding-inline: 0;
+}
+
 @media screen and (min-width: 992px) {
     .popular_search_word_atag {
         height: 16px;
@@ -227,4 +234,60 @@
     font-size: var(--carotene-font-size-100);
     line-height: var(--carotene-body-line-height-small);
     font-weight: var(--carotene-font-weight-regular);
+}
+
+.searchbar_dialog_wrap[data-state=open] {
+    --carotene-enter-translate-x: -50%;
+    --carotene-enter-translate-y: 100%;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-enter);
+    animation-duration: var(--carotene-duration-5);
+}
+
+.searchbar_dialog_wrap {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--carotene-color-bg-layer-default);
+    width: 100%;
+    z-index: var(--carotene-z-index-modal);
+    inset: auto auto 0 50%;
+    transform: translate(-50%);
+    border-radius: var(--carotene-radius-5) var(--carotene-radius-5) 0 0;
+}
+
+.searchbar_dialog_btn[data-state=on] {
+    color: var(--carotene-color-fg-brand);
+    font-weight: var(--carotene-font-weight-bold);
+}
+
+.searchbar_dialog_btn[data-state=on] .searchbar_dialog_svg {
+    display: inline-block;
+}
+
+.searchbar_dialog_svg {
+    display: none;
+    color: inherit;
+}
+
+.searchbar_dialog_overlap[data-state=open] {
+    --carotene-enter-translate-x: 0;
+    --carotene-enter-translate-y: 0;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-standard);
+    animation-duration: var(--carotene-duration-3);
+}
+
+.searchbar_dialog_overlap {
+    position: fixed;
+    z-index: var(--carotene-z-index-modal);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--carotene-color-bg-overlay);
 }
