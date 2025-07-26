@@ -32,6 +32,10 @@
     width: var(--carotene-size-5);
 }
 
+.width_6_base {
+    width: var(--carotene-size-6);
+}
+
 .full_width {
     width: 100%;
 }

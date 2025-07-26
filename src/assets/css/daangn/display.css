@@ -2,8 +2,16 @@
     position: relative;
 }
 
+.position_absolute_base {
+    position: absolute;
+}
+
 .display_none_base {
     display: none;
+}
+
+.display_block_base {
+    display: block;
 }
 
 .display_flex_base {
@@ -55,7 +63,19 @@
 }
 
 @media screen and (min-width: 992px) {
+    .display_none_medium {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
     .display_block_medium {
         display: block;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .display_flex_medium {
+        display: flex;
     }
 }

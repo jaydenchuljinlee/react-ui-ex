@@ -318,6 +318,10 @@
     gap: var(--carotene-spacing-0\.5);
 }
 
+.gap_3_base {
+    gap: var(--carotene-spacing-3);
+}
+
 .gap_4_base {
     gap: var(--carotene-spacing-4);
 }
@@ -327,7 +331,13 @@
 }
 
 
+.left_50\% {
+    left: 50%;
+}
 
+.top_50\% {
+    top: 50%;
+}
 
 .top_0 {
     top: 0;

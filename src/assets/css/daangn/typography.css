@@ -22,3 +22,7 @@
 .fontWeight_semibold {
     font-weight: var(--carotene-font-weight-semibold);
 }
+
+.fontWeight_bold {
+    font-weight: var(--carotene-font-weight-bold);
+}
