@@ -1,6 +1,7 @@
 :root {
     --carotene-font-size-100: 0.875rem;
     --carotene-font-size-200: 1rem;
+    --carotene-font-size-300: 1.25rem;
     
     --carotene-body-line-height-small: 1.25rem;
     
@@ -25,4 +26,8 @@
 
 .fontWeight_bold {
     font-weight: var(--carotene-font-weight-bold);
+}
+
+.fontWeight_regular {
+    font-weight: var(--carotene-font-weight-regular);
 }

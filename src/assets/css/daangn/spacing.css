@@ -167,6 +167,38 @@
     padding-top: var(--carotene-spacing-4);
 }
 
+.pr_5_base {
+    padding-right: var(--carotene-spacing-5);
+}
+
+.pl_5_base {
+    padding-left: var(--carotene-spacing-5);
+}
+
+.pt_5_base {
+    padding-top: var(--carotene-spacing-5);
+}
+
+.pb_5_base {
+    padding-bottom: var(--carotene-spacing-5);
+}
+
+.pr_12_base {
+    padding-right: var(--carotene-spacing-12);
+}
+
+.pl_12_base {
+    padding-left: var(--carotene-spacing-12);
+}
+
+.pt_12_base {
+    padding-top: var(--carotene-spacing-12);
+}
+
+.pb_12_base {
+    padding-bottom: var(--carotene-spacing-12);
+}
+
 @media screen and (min-width: 768px) {
     .pr_4_small {
         padding-right: var(--carotene-spacing-4);
@@ -316,6 +348,10 @@
 
 .gap_0\.5_base {
     gap: var(--carotene-spacing-0\.5);
+}
+
+.gap_1_base {
+    gap: var(--carotene-spacing-1);
 }
 
 .gap_3_base {

@@ -19,6 +19,7 @@
     --carotene-size-32: 8rem;
     --carotene-uniform-height-small: 1.5rem;
     --carotene-body-line-height-small: 1.5rem;
+    --carotene-heading-line-height-medium: 1.75rem;
     --carotene-uniform-height-medium: 2rem;
     
 }
@@ -37,6 +38,10 @@
 }
 
 .full_width {
+    width: 100%;
+}
+
+.width_full_base {
     width: 100%;
 }
 

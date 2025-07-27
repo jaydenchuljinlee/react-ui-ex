@@ -9,6 +9,7 @@
 
     --carotene-color-palette-gray-200: #f3f4f5;
     --carotene-color-palette-gray-900: #2a3038;
+    --carotene-color-palette-blue-800: #135fcd;
 
     --carotene-color-stroke-field: #dcdee3;
     
@@ -17,6 +18,7 @@
     --carotene-color-bg-layer-default: #fff;
     --carotene-color-bg-layer-elevated: #fff;
     --carotene-color-bg-overlay:#00000080;
+    --carotene-color-bg-brand-weak: #fff2ec;
 
 }
 
@@ -38,4 +40,8 @@
 
 .backgroundColor_layerElevated {
     background-color: var(--carotene-color-bg-layer-elevated);
+}
+
+.color_brand {
+    color: var(--carotene-color-fg-brand);
 }
