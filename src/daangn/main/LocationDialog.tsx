@@ -14,7 +14,7 @@ const LocationDialog = ({ children }: LocationDialogProps) => {
             </Dialog.Trigger>
 
             <Dialog.Portal>
-                <Dialog.Overlay className="location_dialog_overlay" style={{ pointerEvents: 'auto' }}/>
+                <Dialog.Overlay className="location_dialog_overlay" style={{ pointerEvents: 'auto' }} />
                 <Dialog.Content
                     className="location_dialog_content_wrap location_dialog_content_wrap_height location_dialog_content_wrap_border location_dialog_content_wrap_box"
                     aria-describedby="dialog-description"
@@ -25,7 +25,7 @@ const LocationDialog = ({ children }: LocationDialogProps) => {
                 </div>
                 
 
-                <div className="location_dialog_content_wrap display_flex_base flexDirection_column_base">
+                <div className="location_dialog_content_main display_flex_base flexDirection_column_base">
                     <div className="pt_4_base pb_4_base display_flex_base flexDirection_column_base gap_4_base">
                         <div className="pl_4_base pr_4_base">
                             <div className="position_relative_base">

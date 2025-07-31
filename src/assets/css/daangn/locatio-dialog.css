@@ -8,6 +8,17 @@
     animation-duration: var(--carotene-duration-3);
 }
 
+.location_dialog_overlay[data-state=closed] {
+    --carotene-exit-translate-x: 0;
+    --carotene-exit-translate-y: 0;
+    --carotene-exit-opacity: 0;
+    --carotene-exit-scale: 1;
+    animation: carotene-exit;
+    animation-timing-function: var(--carotene-timing-function-standard);
+    animation-duration: var(--carotene-duration-3);
+    animation-fill-mode: forwards;
+}
+
 .location_dialog_overlay {
     position: fixed;
     z-index: var(--carotene-z-index-modal);
@@ -20,7 +31,7 @@
 
 .location_dialog_content_wrap {
     --carotene-enter-translate-x: -50%;
-    --carotene-enter-translate-y: 100%;
+    --carotene-enter-translate-y: -100%;
     --carotene-enter-opacity: 0;
     --carotene-enter-scale: 1;
     animation: carotene-enter;
@@ -37,6 +48,30 @@
         animation: carotene-enter;
         animation-timing-function: var(--carotene-timing-function-enter);
         animation-duration: var(--carotene-duration-3);
+    }
+}
+
+.location_dialog_content_wrap[data-state=closed] {
+    --carotene-exit-translate-x: -50%;
+    --carotene-exit-translate-y: 100%;
+    --carotene-exit-opacity: 0;
+    --carotene-exit-scale: 1;
+    animation: carotene-exit;
+    animation-timing-function: var(--carotene-timing-function-exit);
+    animation-duration: var(--carotene-duration-5);
+    animation-fill-mode: forwards;
+}
+
+@media screen and (min-width: 768px) {
+    .location_dialog_content_wrap[data-state=closed] {
+        --carotene-exit-translate-x: -50%;
+        --carotene-exit-translate-y: -48%;
+        --carotene-exit-opacity: 0;
+        --carotene-exit-scale: .95;
+        animation: carotene-exit;
+        animation-timing-function: var(--carotene-timing-function-exit);
+        animation-duration: var(--carotene-duration-3);
+        animation-fill-mode: forwards;
     }
 }
 
@@ -91,7 +126,7 @@
     padding-right: var(--carotene-spacing-8);
 }
 
-.location_dialog_content_wrap {
+.location_dialog_content_main {
     min-height: 0;
     max-height: 100%;
 }
