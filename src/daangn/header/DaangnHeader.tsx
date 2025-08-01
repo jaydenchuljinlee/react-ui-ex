@@ -1,14 +1,30 @@
+import { useEffect, useRef, useState } from 'react';
 import LocationDialog from '../main/LocationDialog';
 
-import { useResponsiveHeaderHeight, useResponsiveFullWidth } from '../constants/layout';
-
 const Header = () => {
-    const width = useResponsiveFullWidth();
-    const height = useResponsiveHeaderHeight();
+    const headerBoxRef = useRef<HTMLDivElement>(null);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          setIsScrolled(scrollTop > 10); // 스크롤이 10px 이상이면 true
+        };
     
+        window.addEventListener('scroll', handleScroll);
+    
+        // 초기 확인
+        handleScroll();
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+  
+
     return (
         <header className="main_header">
-            <div className="main_header_box flexDirection_column_base justifyContent_spaceBetween_base full_width display_flex_base backgroundColor_layerDefault">
+            <div ref={headerBoxRef} className="main_header_box flexDirection_column_base justifyContent_spaceBetween_base full_width display_flex_base backgroundColor_layerDefault" data-border={isScrolled ? 'true' : 'false'}>
                 <div className="wv2v230 pl_4_base pr_4_base pl_10_small pr_10_small pl_16_medium pr_16_medium pl_20_large pr_20_large full_width backgroundColor_layerDefault">
                     <div className="backgroundColor_layerDefault justifyContent_spaceBetween_base alignItems_center_base pb_4_base pt_4_base position_relative_base display_flex_base top_0 zIndex_2">
                         <a data-gtm="gnb_logo" href="/kr/?in=%EC%97%AD%EC%82%BC%EB%8F%99-6035" className="sprinkles_display_flex_base__1byufe82i sprinkles_alignItems_center_base__1byufe8si sprinkles_cursor_pointer__1byufe81o" aria-label="당근" data-discover="true">
