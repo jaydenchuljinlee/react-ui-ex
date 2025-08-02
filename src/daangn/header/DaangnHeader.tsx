@@ -1,7 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LocationDialog from '../main/LocationDialog';
 
-const Header = () => {
+type Props = {
+    searchBtnFlag: boolean;
+};
+
+
+const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) =>  {
     const headerBoxRef = useRef<HTMLDivElement>(null);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,7 +28,7 @@ const Header = () => {
   
 
     return (
-        <header className="main_header">
+        <header ref={ref} className="main_header">
             <div ref={headerBoxRef} className="main_header_box flexDirection_column_base justifyContent_spaceBetween_base full_width display_flex_base backgroundColor_layerDefault" data-border={isScrolled ? 'true' : 'false'}>
                 <div className="wv2v230 pl_4_base pr_4_base pl_10_small pr_10_small pl_16_medium pr_16_medium pl_20_large pr_20_large full_width backgroundColor_layerDefault">
                     <div className="backgroundColor_layerDefault justifyContent_spaceBetween_base alignItems_center_base pb_4_base pt_4_base position_relative_base display_flex_base top_0 zIndex_2">
@@ -38,13 +43,13 @@ const Header = () => {
                         <div className="display_flex_medium alignItems_center_base gap_4_base display_none_base ">
                             <button 
                                 className="main_header_search_btn_large pb_1_base pt_1_base pl_1_base pr_1_base borderRadius_1_base cursor_pointer _7hq86o0"
-                                style={{ opacity: 1 }}
+                                style={{ opacity: searchBtnFlag ? 1 : 0 }}
                                 type="button"
                                 aria-haspopup="dialog"
                                 aria-expanded="false"
                                 aria-controls="radix-:r0:"
                                 data-state="closed"
-                                data-show="true">
+                                data-show={searchBtnFlag ? 'true': 'false'}>
                                 <div className="main_header_search_btn_large_div">검색</div>
                                 <svg className="color_neutral width_6_base height_6_base display_block_base" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M11.3111 1.2002C6.00313 1.2002 1.69995 5.49902 1.69995 10.8048V10.8178C1.69995 16.1236 6.00313 20.4224 11.3111 20.4224C13.5994 20.4224 15.711 19.6233 17.3631 18.2785L21.493 22.4083C21.8835 22.7988 22.5167 22.7988 22.9072 22.4083C23.2977 22.0177 23.2977 21.3846 22.9072 20.9941L18.777 16.864C20.1196 15.2095 20.9222 13.0996 20.9222 10.8048C20.9222 5.49902 16.619 1.2002 11.3111 1.2002ZM3.69995 10.8048C3.69995 6.60502 7.10627 3.2002 11.3111 3.2002C15.5159 3.2002 18.9222 6.60502 18.9222 10.8048C18.9222 13.0794 17.9298 15.1209 16.3465 16.5182L16.3446 16.52C15.0067 17.707 13.2419 18.4224 11.3111 18.4224C7.10627 18.4224 3.69995 15.0176 3.69995 10.8178V10.8048Z" fill="currentColor"></path></g></svg>
                             </button>
@@ -81,13 +86,13 @@ const Header = () => {
                                 </div>
                                 <button
                                     className="main_header_search_btn_small pb_1_base pt_1_base pl_1_base pr_1_base borderRadius_1_base cursor_pointer "
-                                    style={{opacity: 1}}
+                                    style={{opacity: 0}}
                                     type="button"
                                     aria-haspopup="dialog"
                                     aria-expanded="false"
                                     aria-controls="radix-:r4:"
                                     data-state="closed"
-                                    data-show="true">
+                                    data-show="false">
                                         <div className="main_header_search_div_small">검색</div>
                                         <svg className="color_neutral width_6_base height_6_base display_block_base" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M11.3111 1.2002C6.00313 1.2002 1.69995 5.49902 1.69995 10.8048V10.8178C1.69995 16.1236 6.00313 20.4224 11.3111 20.4224C13.5994 20.4224 15.711 19.6233 17.3631 18.2785L21.493 22.4083C21.8835 22.7988 22.5167 22.7988 22.9072 22.4083C23.2977 22.0177 23.2977 21.3846 22.9072 20.9941L18.777 16.864C20.1196 15.2095 20.9222 13.0996 20.9222 10.8048C20.9222 5.49902 16.619 1.2002 11.3111 1.2002ZM3.69995 10.8048C3.69995 6.60502 7.10627 3.2002 11.3111 3.2002C15.5159 3.2002 18.9222 6.60502 18.9222 10.8048C18.9222 13.0794 17.9298 15.1209 16.3465 16.5182L16.3446 16.52C15.0067 17.707 13.2419 18.4224 11.3111 18.4224C7.10627 18.4224 3.69995 15.0176 3.69995 10.8178V10.8048Z" fill="currentColor"></path></g></svg>
                                 </button>
@@ -112,6 +117,6 @@ const Header = () => {
             </div>
         </header>
     );
-}
+})
 
 export default Header;

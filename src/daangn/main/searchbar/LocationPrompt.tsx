@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 
 interface MainLocationPromptProp {
     categories: string[]
 }
 
-const MainLocationPrompt = ({ categories }: MainLocationPromptProp) => {
+const MainLocationPrompt = React.forwardRef<HTMLDivElement, MainLocationPromptProp>(({ categories }, ref) => {
     const [currentWord, setCurrentWord] = useState(categories[0]);
     const [prevWord, setPrevWord] = useState('');
     const [isAnimating, setIsAnimating] = useState(false);
@@ -40,7 +40,7 @@ const MainLocationPrompt = ({ categories }: MainLocationPromptProp) => {
 
     return (
         <div className="mb_16_large mt_32_small mt_12_base mb_12_small display_flex_base justifyContent_center_base">
-            <h2 className="main_h2_font">
+            <h2 ref={ref} className="main_h2_font">
                 <div className="display_none_base width_5_base mr_1_base display_inlineFlex_small mr_1.5_small width_8_small">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="100%" height="100%">
                         <g>
@@ -91,6 +91,6 @@ const MainLocationPrompt = ({ categories }: MainLocationPromptProp) => {
             </h2>
         </div>
     );
-};
+});
 
 export default MainLocationPrompt;
