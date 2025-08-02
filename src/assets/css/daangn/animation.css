@@ -1,0 +1,22 @@
+:root {
+    --carotene-timing-function-enter: cubic-bezier(.03, .4, .1, 1);
+    --carotene-timing-function-standard: cubic-bezier(.35, 0, .35, 1);
+    --carotene-timing-function-exit: cubic-bezier(.35, 0, .95, .55);
+    --carotene-duration-3: .15s;
+    --carotene-duration-5: .25s;
+}
+
+@keyframes carotene-enter {
+    0% {
+        opacity: var(--carotene-enter-opacity, 1);
+        transform: translate3d(var(--carotene-enter-translate-x, 0), var(--carotene-enter-translate-y, 0), 0) scale3d(var(--carotene-enter-scale, 1), var(--carotene-enter-scale, 1), var(--carotene-enter-scale, 1)) rotate(var(--carotene-enter-rotate, 0));
+    }
+}
+
+@keyframes carotene-exit {
+    100% {
+        opacity: var(--carotene-exit-opacity, 1);
+        transform: translate3d(var(--carotene-exit-translate-x, 0), var(--carotene-exit-translate-y, 0), 0) scale3d(var(--carotene-exit-scale, 1), var(--carotene-exit-scale, 1), var(--carotene-exit-scale, 1)) rotate(var(--carotene-exit-rotate, 0));
+    }
+}
+

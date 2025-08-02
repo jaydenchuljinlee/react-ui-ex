@@ -1,0 +1,102 @@
+.main_header {
+    position: sticky;
+    top: 0;
+    z-index: var(--carotene-z-index-sticky);
+  }
+  
+.main_header_box[data-border=true] {
+    border-color: var(--carotene-color-palette-gray-200);
+}
+
+.main_header_box {
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: var(--carotene-color-bg-layer-default);
+}
+
+.main_header_search_btn_large[data-show=true] {
+    visibility: visible;
+  }
+  
+  .main_header_search_btn_large_div {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .main_header_search_small_btn {
+    background-color: var(--carotene-color-bg-neutral);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 100px;
+    transition: background-color .15s;
+  
+    height: 32px;
+    padding-inline: 12px;
+  }
+  
+  .main_header_search_small_svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .main_header_search_btn_small[data-show=true] {
+    visibility: visible;
+  }
+  
+  .main_header_search_div_small {
+    border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+  }
+  
+  .main_header_hamberger_btn_small {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .main_header_hamberger_div_small {
+    transform: translate(-50%, -50%);
+  }
+
+  .app_download_btn_color {
+    background-color: var(--carotene-color-bg-brand-solid);
+    color: var(--carotene-color-fg-on-solid);
+  }
+  
+  .app_download_btn_layout {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    vertical-align: top;
+    transition-duration: var(--carotene-duration-2);
+    transition-timing-function: var(--carotene-timing-function-standard);
+    transition-property: background-color, color;
+  }
+  
+  .app_download_btn_font {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-semibold);
+    height: var(--carotene-uniform-height-medium);
+    padding-inline: var(--carotene-spacing-3);
+    gap: var(--carotene-spacing-0\.5);
+    border-radius: var(--carotene-radius-1);
+  }

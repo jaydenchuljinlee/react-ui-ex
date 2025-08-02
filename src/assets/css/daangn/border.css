@@ -1,0 +1,35 @@
+:root {
+    --carotene-radius-1: .25rem;
+    --carotene-radius-1\.5: .375rem;
+    --carotene-radius-3: .75rem;
+    --carotene-radius-5: 1.25rem;
+    --carotene-radius-full: 9999px;
+    --carotene-color-stroke-field: #dcdee3;
+    --carotene-color-bg-neutral: #f3f4f5;
+    --carotene-color-stroke-decorative: #f3f4f5;
+    
+}
+
+.borderRadius_1_base {
+    border-radius: var(--carotene-radius-1);
+}
+
+.borderRadius_1\.5_base {
+    border-radius: var(--carotene-radius-1\.5);
+}
+
+.borderRadius_3_base {
+    border-radius: var(--carotene-radius-3);
+}
+
+.backgroundColor_neutral {
+    background-color: var(--carotene-color-bg-neutral);
+}
+
+.borderRadius_full_base {
+    border-radius: var(--carotene-radius-full);
+}
+
+.outline_none {
+    outline: none;
+}

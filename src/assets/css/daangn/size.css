@@ -1,0 +1,64 @@
+:root {
+    --carotene-size-0\.5: .125rem;
+    --carotene-size-1: .25rem;
+    --carotene-size-1\.5: .375rem;
+    --carotene-size-2: .5rem;
+    --carotene-size-2\.5: .625rem;
+    --carotene-size-3: .75rem;
+    --carotene-size-3\.5: .875rem;
+    --carotene-size-4: 1rem;
+    --carotene-size-5: 1.25rem;
+    --carotene-size-6: 1.5rem;
+    --carotene-size-7: 1.75rem;
+    --carotene-size-8: 2rem;
+    --carotene-size-10: 2.5rem;
+    --carotene-size-12: 3rem;
+    --carotene-size-16: 4rem;
+    --carotene-size-20: 5rem;
+    --carotene-size-24: 6rem;
+    --carotene-size-32: 8rem;
+    --carotene-uniform-height-small: 1.5rem;
+    --carotene-body-line-height-small: 1.5rem;
+    --carotene-heading-line-height-medium: 1.75rem;
+    --carotene-uniform-height-medium: 2rem;
+    
+}
+
+.wv2v230 {
+    max-width: 1400px;
+    margin-inline: auto;
+}
+
+.width_5_base {
+    width: var(--carotene-size-5);
+}
+
+.width_6_base {
+    width: var(--carotene-size-6);
+}
+
+.full_width {
+    width: 100%;
+}
+
+.width_full_base {
+    width: 100%;
+}
+
+.lineHeight_body\.medium_base {
+    line-height: var(--carotene-body-line-height-medium);
+}
+
+.lineHeight_body\.small_base {
+    line-height: var(--carotene-body-line-height-small);
+}
+
+.height_6_base {
+    height: var(--carotene-size-6);
+}
+
+@media screen and (min-width: 768px) {
+    .width_8_small {
+        width: var(--carotene-size-8);
+    }
+}

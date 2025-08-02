@@ -1,0 +1,225 @@
+.location_dialog_overlay[data-state=open] {
+    --carotene-enter-translate-x: 0;
+    --carotene-enter-translate-y: 0;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-standard);
+    animation-duration: var(--carotene-duration-3);
+}
+
+.location_dialog_overlay[data-state=closed] {
+    --carotene-exit-translate-x: 0;
+    --carotene-exit-translate-y: 0;
+    --carotene-exit-opacity: 0;
+    --carotene-exit-scale: 1;
+    animation: carotene-exit;
+    animation-timing-function: var(--carotene-timing-function-standard);
+    animation-duration: var(--carotene-duration-3);
+    animation-fill-mode: forwards;
+}
+
+.location_dialog_overlay {
+    position: fixed;
+    z-index: var(--carotene-z-index-modal);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--carotene-color-bg-overlay);
+}
+
+.location_dialog_content_wrap {
+    --carotene-enter-translate-x: -50%;
+    --carotene-enter-translate-y: -100%;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-enter);
+    animation-duration: var(--carotene-duration-5);
+}
+
+@media screen and (min-width: 768px) {
+    .location_dialog_content_wrap[data-state=open] {
+        --carotene-enter-translate-x: -50%;
+        --carotene-enter-translate-y: -48%;
+        --carotene-enter-opacity: 0;
+        --carotene-enter-scale: .95;
+        animation: carotene-enter;
+        animation-timing-function: var(--carotene-timing-function-enter);
+        animation-duration: var(--carotene-duration-3);
+    }
+}
+
+.location_dialog_content_wrap[data-state=closed] {
+    --carotene-exit-translate-x: -50%;
+    --carotene-exit-translate-y: 100%;
+    --carotene-exit-opacity: 0;
+    --carotene-exit-scale: 1;
+    animation: carotene-exit;
+    animation-timing-function: var(--carotene-timing-function-exit);
+    animation-duration: var(--carotene-duration-5);
+    animation-fill-mode: forwards;
+}
+
+@media screen and (min-width: 768px) {
+    .location_dialog_content_wrap[data-state=closed] {
+        --carotene-exit-translate-x: -50%;
+        --carotene-exit-translate-y: -48%;
+        --carotene-exit-opacity: 0;
+        --carotene-exit-scale: .95;
+        animation: carotene-exit;
+        animation-timing-function: var(--carotene-timing-function-exit);
+        animation-duration: var(--carotene-duration-3);
+        animation-fill-mode: forwards;
+    }
+}
+
+.location_dialog_content_wrap_height {
+    height: 75vh;
+}
+
+@media screen and (min-width: 992px) {
+    .location_dialog_content_wrap_height {
+        height: 65vh;
+    }
+}
+
+.location_dialog_content_wrap_border {
+    inset: auto auto 0 50%;
+    transform: translate(-50%);
+    border-radius: var(--carotene-radius-5) var(--carotene-radius-5) 0 0;
+}
+
+@media screen and (min-width: 768px) {
+    .location_dialog_content_wrap_border {
+        max-width: 560px;
+        inset: 50% auto auto 50%;
+        transform: translate(-50%, -50%);
+        border-radius: var(--carotene-radius-5);
+    }
+}
+
+.location_dialog_content_wrap_box {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--carotene-color-bg-layer-elevated);
+    width: 100%;
+    z-index: var(--carotene-z-index-modal);
+}
+
+.location_dialog_title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--carotene-spacing-4);
+
+    border-bottom: 1px solid var(--carotene-color-stroke-decorative);
+}
+
+.location_dialog_title_h2 {
+    font-size: var(--carotene-font-size-300);
+    line-height: var(--carotene-heading-line-height-medium);
+    font-weight: var(--carotene-font-weight-bold);
+    color: var(--carotene-color-fg-neutral);
+    padding-right: var(--carotene-spacing-8);
+}
+
+.location_dialog_content_main {
+    min-height: 0;
+    max-height: 100%;
+}
+
+.location_dialog_content_search_input {
+    border: 1px solid var(--carotene-color-stroke-field);
+    border-radius: var(--carotene-spacing-1\.5);
+
+    width: 100%;
+    height: 42px;
+    padding: 12px 42px 12px 12px;
+    line-height: 115%;
+    font-size: var(--carotene-font-size-200);
+    color: var(--carotene-color-palette-gray-900);
+    background: none;
+}
+
+.location_dialog_content_search_btn {
+    right: 6px;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    transition-duration: .15s;
+}
+
+.location_dialog_content_current_my_location_btn {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-semibold);
+    height: var(--carotene-uniform-height-medium);
+    padding-inline: var(--carotene-spacing-3);
+    gap: var(--carotene-spacing-0\.5);
+    border-radius: var(--carotene-radius-1);
+
+    background-color: var(--carotene-color-bg-brand-weak);
+    color: var(--carotene-color-fg-brand);
+
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    vertical-align: top;
+    transition-duration: var(--carotene-duration-2);
+    transition-timing-function: var(--carotene-timing-function-standard);
+    transition-property: background-color, color;
+}
+
+.location_dialog_content_recommend_wrap {
+    overflow-y: auto;
+}
+
+.location_dialog_content_recommend_span {
+    font-size: 13px;
+    line-height: 135%;
+    color: var(--carotene-color-palette-blue-800);
+}
+
+.location_dialog_content_recommend_section {
+    max-width: 100%;
+}
+
+.location_dialog_content_recommend_li {
+    border-bottom: 1px solid var(--carotene-color-palette-gray-200);
+}
+
+.location_dialog_content_recommend_li_a {
+    font-size: 16px;
+    line-height: 135%;
+}
+
+.location_dialog_close_wrap {
+    position: absolute;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    top: calc(var(--carotene-spacing-4) + 2px);
+    right: var(--carotene-spacing-4);
+    color: var(--carotene-color-fg-neutral);
+}
+
+.location_dialog_close_span {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}

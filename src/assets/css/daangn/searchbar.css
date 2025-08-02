@@ -1,0 +1,293 @@
+@import './colors.css';
+@import './spacing.css';
+@import './border.css';
+@import './typography.css';
+@import './size.css';
+
+.search_btn {
+    font-size: 16px;
+    height: 48px;
+    background-color: var(--carotene-color-bg-neutral-inverted);
+    color: var(--carotene-color-fg-neutral-inverted);
+    font-weight: var(--carotene-font-weight-semibold);
+    color: var(--carotene-color-fg-neutral-inverted);
+
+    border-radius: 100px;
+    transition: background-color .15s;
+    appearance: none;
+    border: none;
+}
+
+.search_btn_font {
+    display: block;
+    overflow: hidden;
+    min-width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-line-clamp: var(--carotene-max-lines);
+}
+
+@media screen and (min-width: 1200px) {
+    .search_btn_font {
+        --carotene-max-lines: var(--carotene-max-lines-large);
+    }
+}
+
+.search_btn_svg {
+    width: 18px;
+    height: 18px;
+}
+
+.search_form {
+    height: 48px;
+    border: 1px solid var(--carotene-color-stroke-field);
+    display: flex;
+    align-items: center;
+    padding-left: var(--carotene-spacing-5);
+    border-radius: var(--carotene-radius-full);
+}
+
+.search_form {
+    height: 48px;
+    border: 1px solid var(--carotene-color-stroke-field);
+    display: flex;
+    align-items: center;
+    padding-left: var(--carotene-spacing-5);
+    border-radius: var(--carotene-radius-full);
+}
+
+.searchbar_category_btn_small {
+    display: block;
+}
+
+@media screen and (min-width: 992px) {
+    .searchbar_category_btn_small {
+        display: none;
+    }
+}
+
+.searchbar_category_btn_right_border {
+    border-right: 1px solid var(--carotene-color-stroke-field);
+}
+
+.searchbar_category_btn_large {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+    .searchbar_category_btn_large {
+        display: block;
+    }
+}
+
+.searchbar_category_btn_div {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-semibold);
+}
+
+.search_area {
+    flex-grow: 1;
+}
+
+.search_input {
+    height: 48px;
+    padding: var(--carotene-spacing-3) var(--carotene-spacing-12) var(--carotene-spacing-3) var(--carotene-spacing-4);
+
+    width: 100%;
+    line-height: 115%;
+    font-size: var(--carotene-font-size-200);
+    color: var(--carotene-color-palette-gray-900);
+    background: none;
+}
+
+.search_action_btn {
+    position: absolute;
+    width: var(--carotene-size-7);
+    height: var(--carotene-size-7);
+    display: flex;
+    right: 12px;
+    transform: translateY(-50%);
+    transition: background-color;
+    transition-duration: .15s;
+    background-color: var(--carotene-color-bg-neutral-inverted);
+    border-radius: var(--carotene-radius-full);
+}
+
+@media screen and (min-width: 992px) {
+    .search_area {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .search_bar_width {
+        max-width: 608px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .search_bar_width {
+        max-width: 726px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .search_bar_width {
+        max-width: 754px;
+    }
+}
+
+
+.search_bar_width {
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 992px) {
+    .searchbar_input_wrap {
+        overflow: hidden;
+    }
+}
+
+.searchbar_input_wrap {
+    flex: 1;
+
+}
+
+.popular_search_word_wrap {
+    padding-block: 12px;
+    white-space: nowrap;
+}
+
+.popular_search_word_title {
+    display: block;
+
+}
+
+.popular_search_word_atag {
+    height: 16px;
+    border: 0;
+    color: var(--carotene-color-fg-neutral-muted);
+    padding-inline: 0;
+}
+
+@media screen and (min-width: 992px) {
+    .popular_search_word_atag {
+        height: 16px;
+        border: 0;
+        color: var(--carotene-color-fg-neutral-muted);
+    }
+}
+
+.category_word {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* text-align: left; */
+}
+
+.category_word.current {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+}
+
+.category_word.prev {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0);
+    transition: transform 1s ease, opacity 1s ease;
+    z-index: 2;
+}
+
+.category_word.fade-up {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.searchbar_dropdown_wrap[data-state=open] {
+    --carotene-enter-translate-x: 0;
+    --carotene-enter-translate-y: -10%;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-enter);
+    animation-duration: var(--carotene-duration-3);
+}
+
+.searchbar_dropdown_wrap {
+    width: 99px;
+    box-shadow: 0 2px 12px #0000001a;
+}
+
+.searchbar_dropdown_item[data-state=checked] {
+    color: var(--carotene-color-fg-neutral);
+    font-weight: var(--carotene-font-weight-bold);
+}
+
+.searchbar_dropdown_item {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-regular);
+}
+
+.searchbar_dialog_wrap[data-state=open] {
+    --carotene-enter-translate-x: -50%;
+    --carotene-enter-translate-y: 100%;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-enter);
+    animation-duration: var(--carotene-duration-5);
+}
+
+.searchbar_dialog_wrap {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--carotene-color-bg-layer-default);
+    width: 100%;
+    z-index: var(--carotene-z-index-modal);
+    inset: auto auto 0 50%;
+    transform: translate(-50%);
+    border-radius: var(--carotene-radius-5) var(--carotene-radius-5) 0 0;
+}
+
+.searchbar_dialog_btn[data-state=on] {
+    color: var(--carotene-color-fg-brand);
+    font-weight: var(--carotene-font-weight-bold);
+}
+
+.searchbar_dialog_btn[data-state=on] .searchbar_dialog_svg {
+    display: inline-block;
+}
+
+.searchbar_dialog_svg {
+    display: none;
+    color: inherit;
+}
+
+.searchbar_dialog_overlap[data-state=open] {
+    --carotene-enter-translate-x: 0;
+    --carotene-enter-translate-y: 0;
+    --carotene-enter-opacity: 0;
+    --carotene-enter-scale: 1;
+    animation: carotene-enter;
+    animation-timing-function: var(--carotene-timing-function-standard);
+    animation-duration: var(--carotene-duration-3);
+}
+
+.searchbar_dialog_overlap {
+    position: fixed;
+    z-index: var(--carotene-z-index-modal);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--carotene-color-bg-overlay);
+}
