@@ -6,7 +6,7 @@ import { categoryList } from '../data/category';
 import type { SearchbarProp } from '../../typescript/searchbar/sarchbar';
 
 
-const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
+const SearchBarSection = ({ popullarSearchWords, classes }: SearchbarProp) => {
     const categories = categoryList();
 
     const [value, setValue] = useState('중고거래');
@@ -33,7 +33,7 @@ const SearchBarSection = ({ popullarSearchWords }: SearchbarProp) => {
     }, []);
     
     return (
-        <div ref={wrapperRef} className="search_bar_width display_flex_base full_width mx_auto">
+        <div ref={wrapperRef} className={ classes + ' display_flex_base full_width mx_auto' }>
             <div className="mr_4_base display_block_medium display_none_base">
                 <LocationDialog>
                     <button className="pl_4_base pr_4_base display_flex_base search_btn alignItems_center_base" data-gtm="gnb_location" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rb:" data-state="closed">

@@ -23,7 +23,7 @@ const SearchBarMain = React.forwardRef<SearchBarMainHandle>((props, ref) =>  {
     return (
         <div ref={searchBarRef} className="pl_20_large pr_20_large pt_1.5_base">
             <MainLocationPrompt ref={locationPromptRef} categories={categories} />
-            <SearchBarSection popullarSearchWords={popullarSearchWords} />
+            <SearchBarSection popullarSearchWords={popullarSearchWords} classes='search_bar_width' />
         </div>
     );
 });

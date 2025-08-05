@@ -11,7 +11,11 @@ const ProductWrap = () => {
     return (
         <div className="main_body">
             <DaangnHeader ref={headerRef} searchBtnFlag={searchBtnFlag} />
-            <SearchBarSection popullarSearchWords={popullarSearchWords} />
+            <SearchBarSection popullarSearchWords={popullarSearchWords} classes='wv2v230 pl_20_large pr_20_large' />
+
+            <main className="prdouct_main_warp">
+                <div>hello</div>
+            </main>
         </div>
     );
 }

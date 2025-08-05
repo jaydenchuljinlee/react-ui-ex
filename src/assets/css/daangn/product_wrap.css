@@ -1,0 +1,9 @@
+.prdouct_main_warp {
+    scroll-margin-top: 68px;
+}
+
+@media screen and (min-width: 992px) {
+    .prdouct_main_warp {
+        scroll-margin-top: 72px;
+    }
+}
