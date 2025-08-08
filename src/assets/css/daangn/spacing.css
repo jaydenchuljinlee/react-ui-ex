@@ -7,6 +7,7 @@
 --carotene-spacing-3: 0.75rem;
 --carotene-spacing-4: 1rem;
 --carotene-spacing-5: 1.25rem;
+--carotene-spacing-6: 1.5rem;
 --carotene-spacing-7: 1.75rem;
 --carotene-spacing-8: 2rem;
 --carotene-spacing-10: 2.5rem;
@@ -323,14 +324,70 @@
     margin-right: var(--carotene-spacing-4);
 }
 
+.mr_5_base {
+    margin-right: var(--carotene-spacing-5);
+}
+
+.ml_5_base {
+    margin-left: var(--carotene-spacing-5);
+}
+
+.mt_5_base {
+    margin-top: var(--carotene-spacing-5);
+}
+
+.mb_5_base {
+    margin-bottom: var(--carotene-spacing-5);
+}
+
+.mr_6_base {
+    margin-right: var(--carotene-spacing-6);
+}
+
+.ml_6_base {
+    margin-left: var(--carotene-spacing-6);
+}
+
+.mt_6_base {
+    margin-top: var(--carotene-spacing-6);
+}
+
+.mb_6_base {
+    margin-bottom: var(--carotene-spacing-6);
+}
+
+.mr_7_base {
+    margin-right: var(--carotene-spacing-7);
+}
+
+.ml_7_base {
+    margin-left: var(--carotene-spacing-7);
+}
+
 .mt_7_base {
     margin-top: var(--carotene-spacing-7);
+}
+
+.mb_7_base {
+    margin-bottom: var(--carotene-spacing-7);
 }
 
 
 @media screen and (min-width: 768px) {
     .mr_1\.5_small {
         margin-right: var(--carotene-spacing-1\.5);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mt_6_small {
+        margin-top: var(--carotene-spacing-6);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .mt_7_medium {
+        margin-top: var(--carotene-spacing-7);
     }
 }
 

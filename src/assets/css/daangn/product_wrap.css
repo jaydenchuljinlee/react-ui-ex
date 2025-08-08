@@ -7,3 +7,38 @@
         scroll-margin-top: 72px;
     }
 }
+
+.product_main_wrap_bc_ol, .product_main_wrap_bc_li {
+    display: inline-flex;
+    gap: var(--carotene-spacing-1);
+}
+
+.product_main_wrap_bc_a {
+    color: var(--carotene-color-fg-neutral-muted);
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-regular);
+}
+
+.product_main_wrap_bc_a_span {
+    display: inline-flex;
+    align-items: center;
+    color: var(--carotene-color-fg-neutral-muted);
+}
+
+.product_main_wrap_bc_sub_span_large {
+    color: var(--carotene-color-fg-neutral-muted);
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-semibold);
+}
+
+.product_main_wrap_bc_li:last-of-type>.product_main_wrap_bc_sub_span_small {
+    display: none;
+}
+
+.product_main_wrap_bc_sub_span_small {
+    display: inline-flex;
+    align-items: center;
+    color: var(--carotene-color-fg-neutral-muted);
+}
