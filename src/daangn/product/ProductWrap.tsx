@@ -32,7 +32,46 @@ const ProductWrap = () => {
                                 </li>
                             </ol>
                         </nav>
+
+                        <div className="mt_2_base">
+                            <h1 className="fontSize_400_base fontSize_500_medium fontWeight_bold lineHeight_heading.large_base lineHeight_heading.xlarge">서울특별시 강서구 등촌동 중고거래</h1>
+                        </div>
                     </div>
+
+                    {/* 상품 영역 */}
+                    <section className="display_flex_base gap_0_base gap_6_medium mt_10_base mb_16_base mb_20_medium mb_32_large">
+                        <aside className="product_main_wrap_aside display_none_base display_flex_medium flexDirection_column_base">
+                            <header className="display_flex_base justifyContent_spaceBetween_base alignItems_center_base">
+                                <h2 className="fontSize_300_base fontWeight_bold lineHeight_heading.medium_base" level="2">필터</h2>
+                                <a href="/kr/buy-sell/?in=%EB%93%B1%EC%B4%8C%EB%8F%99-6051" className="fontSize_100_base fontWeight_regular lineHeight_body.small_base color_neutralSubtle textDecoration_underline cursor_pointer" data-discover="true">초기화</a>
+                            </header>
+                            <section>
+                                <div className="mt_6_base pb_5_base">
+                                    <a href="/kr/buy-sell/?in=%EB%93%B1%EC%B4%8C%EB%8F%99-6051&amp;only_on_sale=true" className="product_main_wrap_aside_section_div_a" label="거래 가능만 보기" role="checkbox" aria-label="거래 가능만 보기" aria-checked="false" data-discover="true">
+                                        <div aria-hidden="true" className="product_main_wrap_aside_section_div_a_div">
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" class="_1rvnt076 _1rvnt07b"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2424 3.55704C22.7631 3.96703 22.8529 4.72151 22.4429 5.24222L10.6321 20.2422C10.4172 20.5151 10.0945 20.6816 9.74756 20.6984C9.40059 20.7153 9.06333 20.581 8.82295 20.3302L1.63376 12.8302C1.17515 12.3518 1.19122 11.5922 1.66966 11.1336C2.1481 10.675 2.90773 10.691 3.36634 11.1695L9.60035 17.673L20.5572 3.75749C20.9672 3.23679 21.7217 3.14705 22.2424 3.55704Z" fill="currentColor"></path></g></svg>
+                                        </div>
+                                        <span id="checkbox::rmp::label" className="product_main_wrap_aside_section_div_a_span">거래 가능만 보기</span>
+                                    </a>
+                                </div>
+                                <div className="product_main_wrap_aside_section_border"></div>
+                                {/* 위치 */}
+                                <div>
+                                위치
+                                </div>
+                                <div className="product_main_wrap_aside_section_border"></div>
+                                {/* 카테고리 */}
+                                <div>
+                                카테고리
+                                </div>
+                                <div className="product_main_wrap_aside_section_border"></div>
+                                {/* 가격 */}
+                                <div>
+                                가격
+                                </div>
+                            </section>
+                        </aside>
+                    </section>
                 </div>
             </main>
         </div>

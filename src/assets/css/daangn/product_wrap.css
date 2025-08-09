@@ -42,3 +42,65 @@
     align-items: center;
     color: var(--carotene-color-fg-neutral-muted);
 }
+
+
+@media screen and (min-width: 992px) {
+    .product_main_wrap_aside {
+        width: 198px;
+        min-width: 198px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .product_main_wrap_aside {
+        width: 242px;
+        min-width: 242px;
+    }
+}
+
+.product_main_wrap_aside_section_div_a {
+    font-size: var(--carotene-font-size-200);
+    line-height: var(--carotene-body-line-height-medium);
+    font-weight: var(--carotene-font-weight-semibold);
+    min-height: var(--carotene-uniform-height-medium);
+    gap: var(--carotene-spacing-2);
+
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+}
+
+.product_main_wrap_aside_section_div_a_div {
+    height: var(--carotene-size-5);
+    width: var(--carotene-size-5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: calc(var(--carotene-uniform-height-medium) / 2 - var(--carotene-size-5) / 2);
+    border-width: var(--carotene-border-width-1);
+    border-style: solid;
+    border-color: var(--carotene-color-stroke-control);
+    border-radius: var(--carotene-radius-1);
+}
+
+.product_main_wrap_aside_section_div_a_span {
+    font-size: var(--carotene-font-size-200);
+    line-height: var(--carotene-body-line-height-medium);
+    font-weight: var(--carotene-font-weight-regular);
+
+    -webkit-user-select: none;
+    user-select: none;
+    margin-top: 4px;
+    color: var(--carotene-color-fg-neutral);
+}
+
+.product_main_wrap_aside_section_border {
+    border-bottom-width: var(--carotene-border-width-1);
+    border-style: solid;
+    width: 100%;
+    border-color: var(--carotene-color-stroke-decorative);
+    height: 1px;
+}

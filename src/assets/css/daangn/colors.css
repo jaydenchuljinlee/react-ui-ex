@@ -12,6 +12,7 @@
     --carotene-color-palette-blue-800: #135fcd;
 
     --carotene-color-stroke-field: #dcdee3;
+    --carotene-color-stroke-control: #dcdee3;
     
     --carotene-color-bg-brand-solid: #f60;
     --carotene-color-bg-neutral-inverted: #2a3038;
@@ -20,9 +21,15 @@
     --carotene-color-bg-overlay:#00000080;
     --carotene-color-bg-brand-weak: #fff2ec;
 
+    
+
 }
 
 .neutralSubtle {
+    color: var(--carotene-color-fg-neutral-subtle);
+}
+
+.color_neutralSubtle {
     color: var(--carotene-color-fg-neutral-subtle);
 }
 

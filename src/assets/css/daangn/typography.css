@@ -2,6 +2,8 @@
     --carotene-font-size-100: 0.875rem;
     --carotene-font-size-200: 1rem;
     --carotene-font-size-300: 1.25rem;
+    --carotene-font-size-400: 1.5rem;
+    --carotene-font-size-500: 1.75rem;
     
     --carotene-body-line-height-small: 1.25rem;
     
@@ -30,4 +32,22 @@
 
 .fontWeight_regular {
     font-weight: var(--carotene-font-weight-regular);
+}
+
+.fontSize_300_base {
+    font-size: var(--carotene-font-size-300);
+}
+
+.fontSize_400_base {
+    font-size: var(--carotene-font-size-400);
+}
+
+@media screen and (min-width: 992px) {
+    .fontSize_500_medium {
+        font-size: var(--carotene-font-size-500);
+    }
+}
+
+.textDecoration_underline {
+    text-decoration: underline;
 }
