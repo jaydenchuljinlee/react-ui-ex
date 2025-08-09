@@ -298,6 +298,22 @@
     margin-bottom: var(--carotene-spacing-1);
 }
 
+.mr_1\.5_base {
+    margin-right: var(--carotene-spacing-1\.5);
+}
+
+.ml_1\.5_base {
+    margin-left: var(--carotene-spacing-1\.5);
+}
+
+.mt_1\.5_base {
+    margin-top: var(--carotene-spacing-1\.5);
+}
+
+.mb_1\.5_base {
+    margin-bottom: var(--carotene-spacing-1\.5);
+}
+
 .mr_2_base {
     margin-right: var(--carotene-spacing-2);
 }

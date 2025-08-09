@@ -131,3 +131,76 @@
     border-color: var(--carotene-color-stroke-decorative);
     height: 1px;
 }
+
+.product_main_wrap_location_div {
+    overflow-y: scroll;
+    max-height: 452px;
+
+    margin-right: -2px;
+    margin-bottom: -2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+}
+
+.product_main_wrap_location_div_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.product_main_wrap_location_div_div_a {
+    font-size: var(--carotene-font-size-200);
+    line-height: var(--carotene-body-line-height-medium);
+    font-weight: var(--carotene-font-weight-semibold);
+    min-height: var(--carotene-uniform-height-medium);
+    gap: var(--carotene-spacing-2);
+
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    padding-top: var(--carotene-spacing-1);
+}
+
+.product_main_wrap_location_div_div_a_icon_wrap {
+    height: var(--carotene-size-5);
+    width: var(--carotene-size-5);
+
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--carotene-spacing-0\.5);
+    margin-bottom: var(--carotene-spacing-0\.5);
+    border-width: var(--carotene-border-width-1);
+    border-style: solid;
+    border-color: var(--carotene-color-stroke-control);
+    border-radius: var(--carotene-radius-full);
+}
+
+.product_main_wrap_location_div_div_a_icon_wrap[data-checked] {
+    border-width: 0;
+    background-color: var(--carotene-color-bg-brand-solid);
+}
+
+.product_main_wrap_location_div_div_a_icon_wrap_inner {
+    display: none;
+    flex-shrink: 0;
+    background-color: var(--carotene-color-fg-on-solid);
+    border-radius: var(--carotene-radius-full);
+
+    height: var(--carotene-size-2);
+    width: var(--carotene-size-2);
+}
+
+.product_main_wrap_location_div_div_a_icon_wrap_inner[data-checked] {
+    display: inline-block;
+}
+
+.product_main_wrap_location_div_div_a_label {
+    font-size: var(--carotene-font-size-200);
+    line-height: var(--carotene-body-line-height-medium);
+    font-weight: var(--carotene-font-weight-regular);
+
+    color: var(--carotene-color-fg-neutral);
+}
+

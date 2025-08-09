@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 
 import * as Checkbox from "@radix-ui/react-checkbox";
-import { CheckIcon } from "@radix-ui/react-icons";
+import * as RadioGroup from "@radix-ui/react-radio-group";
 
 import DaangnHeader from '../header/DaangnHeader';
 import SearchBarSection from '../main/searchbar/SearchBarSection';
@@ -11,6 +11,7 @@ const ProductWrap = () => {
     const [searchBtnFlag, setSearchBtnFlag] = useState(false);
     const [popullarSearchWords, setPopullarSearchWords] = useState(['에어컨', '에어컨청소', '노트북', '원룸', '현대 중고차', '이사짐 알바', '근처 맛집', '투표', '동네친구', '배드민턴 모집', '자전거', '플스', '투룸 빌라', '닌텐도', '서빙 알바', '기아 중고차', '전세 매물']);
     const [hovered, setHovered] = useState(false);
+    const [selected, setSelected] = useState("deungchon");
     
     return (
         <div className="main_body">
@@ -86,8 +87,75 @@ const ProductWrap = () => {
                                 </div>
                                 <div className="product_main_wrap_aside_section_border"></div>
                                 {/* 위치 */}
-                                <div>
-                                위치
+                                <div className="mt_6_base mb_6_base display_flex_base flexDirection_column_base gap_3_base">
+                                    <h3 className="fontSize_200_base fontWeight_bold lineHeight_heading.small_base" level="3">위치</h3>
+                                    <div>
+                                        <span className="fontSize_200_base fontWeight_regular lineHeight_body.medium_base color_neutral">서울특별시 강서구</span>
+                                        {/* 위치 선택 체크방스 영역 */}
+                                        <div className="position_relative_base overflow_hidden mt_1_base mb_1_base">
+                                            <div className="product_main_wrap_location_div">
+                                                <div className="mt_1.5_base">
+                                                    <div className="product_main_wrap_location_div_div">
+                                                        <div>
+                                                            <RadioGroup.Root
+                                                                value={selected}
+                                                                onValueChange={setSelected}
+                                                                aria-label="지역 선택"
+                                                                className="flex gap-2"
+                                                            >
+                                                                <RadioGroup.Item value="deungchon" asChild>
+                                                                    <a
+                                                                        href="#"
+                                                                        className="product_main_wrap_location_div_div_a _15sions1 _15sions0"
+                                                                        data-gtm="search_filter"
+                                                                        data-discover="true"
+                                                                    >
+                                                                        {/* 아이콘 영역 */}
+                                                                        <div
+                                                                            className="product_main_wrap_location_div_div_a_icon_wrap _1ljdcwf5 _1ljdcwf7 _15sions2"
+                                                                            data-checked={selected === "deungchon" ? "" : undefined}
+                                                                            >
+                                                                            <div
+                                                                                className="product_main_wrap_location_div_div_a_icon_wrap_inner"
+                                                                                data-checked={selected === "deungchon" ? "" : undefined}
+                                                                                ></div>
+                                                                        </div>
+
+                                                                        {/* 라벨 영역 */}
+                                                                        <span className="product_main_wrap_location_div_div_a_label">등촌동</span>
+                                                                    </a>
+                                                                </RadioGroup.Item>
+
+                                                                <RadioGroup.Item value="mokdong" asChild>
+                                                                    <a
+                                                                        href="#"
+                                                                        className="product_main_wrap_location_div_div_a _15sions1 _15sions0"
+                                                                        data-gtm="search_filter"
+                                                                        data-discover="true"
+                                                                    >
+                                                                        {/* 아이콘 영역 */}
+                                                                        <div
+                                                                            className="product_main_wrap_location_div_div_a_icon_wrap _1ljdcwf5 _1ljdcwf7 _15sions2"
+                                                                            data-checked={selected === "mokdong" ? "" : undefined}
+                                                                            >
+                                                                            <div
+                                                                                className="product_main_wrap_location_div_div_a_icon_wrap_inner"
+                                                                                data-checked={selected === "mokdong" ? "" : undefined}
+                                                                                ></div>
+                                                                        </div>
+
+                                                                        {/* 라벨 영역 */}
+                                                                        <span className="product_main_wrap_location_div_div_a_label">목동</span>
+                                                                    </a>
+                                                                </RadioGroup.Item>
+                                                            </RadioGroup.Root>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="product_main_wrap_aside_section_border"></div>
                                 {/* 카테고리 */}

@@ -50,6 +50,10 @@
     flex-shrink: 0;
 }
 
+.overflow_hidden {
+    overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
     .display_none_small {
         display: none;
