@@ -1,5 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 
+import * as Checkbox from "@radix-ui/react-checkbox";
+import { CheckIcon } from "@radix-ui/react-icons";
+
 import DaangnHeader from '../header/DaangnHeader';
 import SearchBarSection from '../main/searchbar/SearchBarSection';
 
@@ -7,6 +10,7 @@ const ProductWrap = () => {
     const headerRef = useRef<HTMLDivElement>(null);
     const [searchBtnFlag, setSearchBtnFlag] = useState(false);
     const [popullarSearchWords, setPopullarSearchWords] = useState(['에어컨', '에어컨청소', '노트북', '원룸', '현대 중고차', '이사짐 알바', '근처 맛집', '투표', '동네친구', '배드민턴 모집', '자전거', '플스', '투룸 빌라', '닌텐도', '서빙 알바', '기아 중고차', '전세 매물']);
+    const [hovered, setHovered] = useState(false);
     
     return (
         <div className="main_body">
@@ -47,12 +51,38 @@ const ProductWrap = () => {
                             </header>
                             <section>
                                 <div className="mt_6_base pb_5_base">
-                                    <a href="/kr/buy-sell/?in=%EB%93%B1%EC%B4%8C%EB%8F%99-6051&amp;only_on_sale=true" className="product_main_wrap_aside_section_div_a" label="거래 가능만 보기" role="checkbox" aria-label="거래 가능만 보기" aria-checked="false" data-discover="true">
-                                        <div aria-hidden="true" className="product_main_wrap_aside_section_div_a_div">
-                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" class="_1rvnt076 _1rvnt07b"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2424 3.55704C22.7631 3.96703 22.8529 4.72151 22.4429 5.24222L10.6321 20.2422C10.4172 20.5151 10.0945 20.6816 9.74756 20.6984C9.40059 20.7153 9.06333 20.581 8.82295 20.3302L1.63376 12.8302C1.17515 12.3518 1.19122 11.5922 1.66966 11.1336C2.1481 10.675 2.90773 10.691 3.36634 11.1695L9.60035 17.673L20.5572 3.75749C20.9672 3.23679 21.7217 3.14705 22.2424 3.55704Z" fill="currentColor"></path></g></svg>
-                                        </div>
-                                        <span id="checkbox::rmp::label" className="product_main_wrap_aside_section_div_a_span">거래 가능만 보기</span>
-                                    </a>
+                                    <Checkbox.Root
+                                        className="product_main_wrap_aside_section_div_a"
+                                        asChild
+                                        defaultChecked={false}
+                                        >
+                                            <a
+                                                href="#"
+                                                role="checkbox"
+                                                aria-label="거래 가능만 보기"
+                                                data-hover={hovered ? "" : undefined}
+                                                onMouseEnter={() => setHovered(true)}
+                                                onMouseLeave={() => setHovered(false)}
+                                                className="product_main_wrap_aside_section_div_a">
+                                                <Checkbox.Indicator forceMount asChild>
+                                                    <div
+                                                        aria-hidden="true"
+                                                        data-hover={hovered ? "" : undefined}
+                                                        className="product_main_wrap_aside_section_div_a_div">
+                                                        <svg
+                                                            className="product_main_wrap_aside_section_div_a_svg"
+                                                            data-hover={hovered ? "" : undefined}
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            data-seed-icon="true"
+                                                            data-seed-icon-version="0.0.23"
+                                                            width="24" height="24"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2424 3.55704C22.7631 3.96703 22.8529 4.72151 22.4429 5.24222L10.6321 20.2422C10.4172 20.5151 10.0945 20.6816 9.74756 20.6984C9.40059 20.7153 9.06333 20.581 8.82295 20.3302L1.63376 12.8302C1.17515 12.3518 1.19122 11.5922 1.66966 11.1336C2.1481 10.675 2.90773 10.691 3.36634 11.1695L9.60035 17.673L20.5572 3.75749C20.9672 3.23679 21.7217 3.14705 22.2424 3.55704Z" fill="currentColor"></path></g></svg>
+                                                    </div>
+                                                </Checkbox.Indicator>
+                                                <span className="product_main_wrap_aside_section_div_a_span">거래 가능만 보기</span>
+                                                </a>
+                                    </Checkbox.Root>
                                 </div>
                                 <div className="product_main_wrap_aside_section_border"></div>
                                 {/* 위치 */}

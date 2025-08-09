@@ -86,6 +86,33 @@
     border-radius: var(--carotene-radius-1);
 }
 
+.product_main_wrap_aside_section_div_a_div[data-state="checked"] {
+    border-width: 0;
+    background-color: var(--carotene-color-bg-brand-solid);
+}
+
+.product_main_wrap_aside_section_div_a_div[data-hover] {
+    background-color: var(--carotene-color-bg-layer-brand-hover);
+}
+
+.product_main_wrap_aside_section_div_a_div[data-state="checked"][data-hover]{
+    background-color: var(--carotene-color-bg-brand-solid-hover);
+}
+
+.product_main_wrap_aside_section_div_a_svg {
+    height: var(--carotene-size-4);
+    width: var(--carotene-size-4);
+
+    display: none;
+    flex-shrink: 0;
+    color: var(--carotene-color-fg-on-solid);
+}
+
+.product_main_wrap_aside_section_div_a_div[data-state="checked"] 
+.product_main_wrap_aside_section_div_a_svg {
+  display: inline-block;
+}
+
 .product_main_wrap_aside_section_div_a_span {
     font-size: var(--carotene-font-size-200);
     line-height: var(--carotene-body-line-height-medium);

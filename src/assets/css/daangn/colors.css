@@ -15,8 +15,11 @@
     --carotene-color-stroke-control: #dcdee3;
     
     --carotene-color-bg-brand-solid: #f60;
+    --carotene-color-bg-brand-solid-hover: #ff9364;
     --carotene-color-bg-neutral-inverted: #2a3038;
     --carotene-color-bg-layer-default: #fff;
+    --carotene-color-bg-layer-default-hover: #f7f8f9;
+
     --carotene-color-bg-layer-elevated: #fff;
     --carotene-color-bg-overlay:#00000080;
     --carotene-color-bg-brand-weak: #fff2ec;
