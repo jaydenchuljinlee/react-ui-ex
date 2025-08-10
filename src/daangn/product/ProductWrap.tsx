@@ -11,7 +11,8 @@ const ProductWrap = () => {
     const [searchBtnFlag, setSearchBtnFlag] = useState(false);
     const [popullarSearchWords, setPopullarSearchWords] = useState(['에어컨', '에어컨청소', '노트북', '원룸', '현대 중고차', '이사짐 알바', '근처 맛집', '투표', '동네친구', '배드민턴 모집', '자전거', '플스', '투룸 빌라', '닌텐도', '서빙 알바', '기아 중고차', '전세 매물']);
     const [hovered, setHovered] = useState(false);
-    const [selected, setSelected] = useState("deungchon");
+    const [locationSelected, setLocationSelected] = useState("deungchon");
+    const [categorySelected, setCategorySelected] = useState("digitalDevice");
     
     return (
         <div className="main_body">
@@ -98,8 +99,8 @@ const ProductWrap = () => {
                                                     <div className="product_main_wrap_location_div_div">
                                                         <div>
                                                             <RadioGroup.Root
-                                                                value={selected}
-                                                                onValueChange={setSelected}
+                                                                value={locationSelected}
+                                                                onValueChange={setLocationSelected}
                                                                 aria-label="지역 선택"
                                                                 className="flex gap-2"
                                                             >
@@ -113,11 +114,11 @@ const ProductWrap = () => {
                                                                         {/* 아이콘 영역 */}
                                                                         <div
                                                                             className="product_main_wrap_location_div_div_a_icon_wrap _1ljdcwf5 _1ljdcwf7 _15sions2"
-                                                                            data-checked={selected === "deungchon" ? "" : undefined}
+                                                                            data-checked={locationSelected === "deungchon" ? "" : undefined}
                                                                             >
                                                                             <div
                                                                                 className="product_main_wrap_location_div_div_a_icon_wrap_inner"
-                                                                                data-checked={selected === "deungchon" ? "" : undefined}
+                                                                                data-checked={locationSelected === "deungchon" ? "" : undefined}
                                                                                 ></div>
                                                                         </div>
 
@@ -136,12 +137,14 @@ const ProductWrap = () => {
                                                                         {/* 아이콘 영역 */}
                                                                         <div
                                                                             className="product_main_wrap_location_div_div_a_icon_wrap _1ljdcwf5 _1ljdcwf7 _15sions2"
-                                                                            data-checked={selected === "mokdong" ? "" : undefined}
+                                                                            data-checked={locationSelected === "mokdong" ? "" : undefined}
                                                                             >
                                                                             <div
                                                                                 className="product_main_wrap_location_div_div_a_icon_wrap_inner"
-                                                                                data-checked={selected === "mokdong" ? "" : undefined}
-                                                                                ></div>
+                                                                                data-checked={locationSelected === "mokdong" ? "" : undefined}
+                                                                                >
+                                                                                
+                                                                                </div>
                                                                         </div>
 
                                                                         {/* 라벨 영역 */}
@@ -149,18 +152,76 @@ const ProductWrap = () => {
                                                                     </a>
                                                                 </RadioGroup.Item>
                                                             </RadioGroup.Root>
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <button className="product_main_wrap_location_add_view mt_1.5_base" data-gtm="search_show_more_options">더보기</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="product_main_wrap_aside_section_border"></div>
                                 {/* 카테고리 */}
-                                <div>
-                                카테고리
+                                <div className="mt_6_base mb_6_base display_flex_base flexDirection_column_base gap_3_base">
+                                    <h3 className="fontSize_200_base fontWeight_bold lineHeight_heading.small_base">카테고리</h3>
+                                    <div className="product_main_wrap_location_div_div">
+                                        <div>
+                                            <RadioGroup.Root
+                                                value={categorySelected}
+                                                onValueChange={setCategorySelected}
+                                                aria-label="지역 선택"
+                                                className="flex gap-2"
+                                            >
+                                                <RadioGroup.Item value="homeAppliances" asChild>
+                                                    <a
+                                                        href="#"
+                                                        className="product_main_wrap_location_div_div_a _15sions1 _15sions0"
+                                                        data-gtm="search_filter"
+                                                        data-discover="true"
+                                                    >
+                                                        {/* 아이콘 영역 */}
+                                                        <div
+                                                            className="product_main_wrap_location_div_div_a_icon_wrap _1ljdcwf5 _1ljdcwf7 _15sions2"
+                                                            data-checked={categorySelected === "homeAppliances" ? "" : undefined}
+                                                            >
+                                                            <div
+                                                                className="product_main_wrap_location_div_div_a_icon_wrap_inner"
+                                                                data-checked={categorySelected === "homeAppliances" ? "" : undefined}
+                                                                ></div>
+                                                        </div>
+
+                                                        {/* 라벨 영역 */}
+                                                        <span className="product_main_wrap_location_div_div_a_label">생활가전</span>
+                                                    </a>
+                                                </RadioGroup.Item>
+
+                                                <RadioGroup.Item value="digitalDevice" asChild>
+                                                    <a
+                                                        href="#"
+                                                        className="product_main_wrap_location_div_div_a _15sions1 _15sions0"
+                                                        data-gtm="search_filter"
+                                                        data-discover="true"
+                                                    >
+                                                        {/* 아이콘 영역 */}
+                                                        <div
+                                                            className="product_main_wrap_location_div_div_a_icon_wrap _1ljdcwf5 _1ljdcwf7 _15sions2"
+                                                            data-checked={categorySelected === "digitalDevice" ? "" : undefined}
+                                                            >
+                                                            <div
+                                                                className="product_main_wrap_location_div_div_a_icon_wrap_inner"
+                                                                data-checked={categorySelected === "digitalDevice" ? "" : undefined}
+                                                                >
+                                                                
+                                                                </div>
+                                                        </div>
+
+                                                        {/* 라벨 영역 */}
+                                                        <span className="product_main_wrap_location_div_div_a_label">디지털기기</span>
+                                                    </a>
+                                                </RadioGroup.Item>
+                                            </RadioGroup.Root>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="product_main_wrap_aside_section_border"></div>
                                 {/* 가격 */}

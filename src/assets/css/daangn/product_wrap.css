@@ -204,3 +204,22 @@
     color: var(--carotene-color-fg-neutral);
 }
 
+.product_main_wrap_location_add_view {
+    font-size: var(--carotene-font-size-100);
+    line-height: var(--carotene-body-line-height-small);
+    font-weight: var(--carotene-font-weight-regular);
+    height: var(--carotene-uniform-height-small);
+
+    color: var(--carotene-color-fg-brand);
+
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    vertical-align: top;
+    border-radius: var(--carotene-radius-1);
+
+    width: fit-content;
+}
