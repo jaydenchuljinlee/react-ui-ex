@@ -35,3 +35,19 @@
 .outline_none {
     outline: none;
 }
+
+.borderWidth_1 {
+    border-width: var(--carotene-border-width-1);
+}
+
+.borderColor_decorative {
+    border-color: var(--carotene-color-stroke-decorative);
+}
+
+.borderColor_field {
+    border-color: var(--carotene-color-stroke-field);
+}
+
+.sprinkles_backgroundColor_layerDefault__1byufe8n {
+    background-color: var(--carotene-color-bg-layer-default);
+}

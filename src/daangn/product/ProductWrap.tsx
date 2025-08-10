@@ -225,8 +225,57 @@ const ProductWrap = () => {
                                 </div>
                                 <div className="product_main_wrap_aside_section_border"></div>
                                 {/* 가격 */}
-                                <div>
-                                가격
+                                <div className="marginTop_6_base marginBottom_6_base display_flex_base flexDirection_column_base gap_3_base">
+                                    <h3 className="fontSize_200_base fontWeight_bold lineHeight_heading.small_base" level="3">가격</h3>
+                                    <div className="display_flex_base flexDirection_column_base gap_3_base">
+                                        <a
+                                            data-gtm="search_filter"
+                                            href="#"
+                                            className="product_main_wrap_price_a pt_1_base pb_1_base pl_3_base pr_3_base display_inlineFlex_base alignItems_center_base justifyContent_center_base gap_1_base borderWidth_1 borderColor_decorative borderRadius_full_base fontSize_100_base "
+                                            data-discover="true">나눔</a>
+                                        <a
+                                            data-gtm="search_filter"
+                                            href="#"
+                                            className="product_main_wrap_price_a pt_1_base pb_1_base pl_3_base pr_3_base display_inlineFlex_base alignItems_center_base justifyContent_center_base gap_1_base borderWidth_1 borderColor_decorative borderRadius_full_base fontSize_100_base "
+                                            data-discover="true">5,000원 이하</a>
+                                        <a
+                                            data-gtm="search_filter"
+                                            href="#"
+                                            className="product_main_wrap_price_a pt_1_base pb_1_base pl_3_base pr_3_base display_inlineFlex_base alignItems_center_base justifyContent_center_base gap_1_base borderWidth_1 borderColor_decorative borderRadius_full_base fontSize_100_base "
+                                            data-discover="true">10,000원 이하</a>
+                                        <a
+                                            data-gtm="search_filter"
+                                            href="#"
+                                            className="product_main_wrap_price_a pt_1_base pb_1_base pl_3_base pr_3_base display_inlineFlex_base alignItems_center_base justifyContent_center_base gap_1_base borderWidth_1 borderColor_decorative borderRadius_full_base fontSize_100_base "
+                                            data-discover="true">20,000원 이하</a>
+                                    </div>
+                                    <div className="mt_2_small">
+                                        <div className="display_flex_base alignItems_center_base justifyContent_center_base gap_1.5_base">
+                                            <input
+                                                id="price-from"
+                                                className="_1sevvqs5 fontSize_100_base fontWeight_regular lineHeight_body.small_base color_neutral pt_1.5_base pb_1.5_base pl_2_base pr_2_base width_full_base borderRadius_1.5_base borderWidth_1 borderColor_field backgroundColor_layerDefault"
+                                                type="text"
+                                                inputmode="numeric"
+                                                pattern="[0-9]*"
+                                                placeholder="0"
+                                                value="0" />
+                                            <span className="fontSize_200_base fontWeight_regular lineHeight_body.medium_base color_neutral">-</span>
+                                            <input
+                                                id="price-to"
+                                                className="_1sevvqs5 fontSize_100_base fontWeight_regular lineHeight_body.small_base color_neutral pt_1.5_base pb_1.5_base pl_2_base pr_2_base width_full_base borderRadius_1.5_base borderWidth_1 borderColor_field backgroundColor_layerDefault"
+                                                type="text"
+                                                inputmode="numeric"
+                                                pattern="[0-9]*"
+                                                placeholder="최대"
+                                                value="0" />
+                                        </div>
+                                        <div className="mt_1_base">
+                                        <a
+                                            href="#"
+                                            className="_9vtb2d0 fontSize_100_base fontWeight_regular lineHeight_body.small_base color_neutralSubtle textDecoration_underline cursor_pointer"
+                                            data-discover="true">적용하기</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
                         </aside>

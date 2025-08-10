@@ -139,7 +139,7 @@
 }
 
 .pl_3_base {
-    padding-right: var(--carotene-spacing-3);
+    padding-left: var(--carotene-spacing-3);
 }
 
 .pb_3_base {
@@ -442,6 +442,12 @@
 }
 
 @media screen and (min-width: 768px) {
+    .mt_2_small {
+        margin-top: var(--carotene-spacing-2);
+    }
+}
+
+@media screen and (min-width: 768px) {
     .mt_6_small {
         margin-top: var(--carotene-spacing-6);
     }
@@ -487,6 +493,10 @@
 
 .gap_1_base {
     gap: var(--carotene-spacing-1);
+}
+
+.gap_1\.5_base {
+    gap: var(--carotene-spacing-1\.5);
 }
 
 .gap_3_base {

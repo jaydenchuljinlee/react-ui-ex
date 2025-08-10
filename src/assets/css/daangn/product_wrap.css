@@ -223,3 +223,15 @@
 
     width: fit-content;
 }
+
+.product_main_wrap_price_a {
+    background-color: var(--carotene-color-bg-layer-default);
+    color: var(--carotene-color-fg-neutral);
+
+    width: fit-content;
+}
+
+.product_main_wrap_price_a[data-checked] {
+    background-color: var(--carotene-color-bg-neutral-inverted);
+    color: var(--carotene-color-fg-neutral-inverted);
+}
