@@ -279,6 +279,58 @@ const ProductWrap = () => {
                                 </div>
                             </section>
                         </aside>
+                        {/* 상품 리스트 */}
+                        <div className="width_full_base display_flex_base flexDirection_column_base">
+                            {/* 선택한 카테고리 */}
+                            <div className="product_main_wrap_list_div width_full_base display_flex_base alignItems_center_base justifyContent_flexStart_base gap_2_base mt_0_base mt_5_small mt_0_medium">
+                                <div className="product_main_wrap_list_div_div display_flex_base alignItems_center_base gap_2_base">
+                                    <ul className="display_flex_base gap_2_base">
+                                        <li className="display_inlineFlex_base justifyContent_center_base alignItems_center_base">
+                                            <a
+                                                href="#"
+                                                className="product_main_wrap_list_div_div_a pt_1.5_base pb_1.5_base pl_3_base pr_3_base display_inlineFlex_base alignItems_center_base justifyContent_center_base borderRadius_full_base borderColor_decorative borderWidth_1 cursor_pointer fontSize_100_base gap_1_base"
+                                                data-discover="true">
+                                                디지털기기
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" color="var(--carotene-color-fg-neutral-inverted)" aria-hidden="true"><g><path d="M20.7071 4.70711C21.0976 4.31658 21.0976 3.68342 20.7071 3.29289C20.3166 2.90237 19.6834 2.90237 19.2929 3.29289L12 10.5858L4.70711 3.29289C4.31658 2.90237 3.68342 2.90237 3.29289 3.29289C2.90237 3.68342 2.90237 4.31658 3.29289 4.70711L10.5858 12L3.29289 19.2929C2.90237 19.6834 2.90237 20.3166 3.29289 20.7071C3.68342 21.0976 4.31658 21.0976 4.70711 20.7071L12 13.4142L19.2929 20.7071C19.6834 21.0976 20.3166 21.0976 20.7071 20.7071C21.0976 20.3166 21.0976 19.6834 20.7071 19.2929L13.4142 12L20.7071 4.70711Z" fill="currentColor"></path></g></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {/* 상품 목록 */}
+                            <div className="product_main_wrap_list_div_product_div width_full_base">
+                                <a
+                                    data-gtm="search_article"
+                                    className="b4c4lz6 display_flex_base"
+                                    href="#"
+                                    data-discover="true">
+                                    <div className="display_flex_base flexDirection_column_base gap_2_base lyhwr1a lyhwr18 lyhwr1b lyhwr16 lyhwr1d lyhwr19">
+                                        <div className="position_relative_base">
+                                            <div className="lyhwr1e _101lssj1 width_full_base overflow_hidden position_relative_base borderRadius_1.5_base"><noscript></noscript>
+                                                <span class="lyhwr1f overflow_hidden position_relative_base display_block_base width_full_base height_full_base lazy-load-image-background opacity lazy-load-image-loaded" style="color: transparent; display: inline-block;">
+                                                    <img className="lyhwr1g width_full_base height_full_base borderRadius_1.5_base" src="https://dnvefa72aowie.cloudfront.net/origin/article/202406/9d6fb0cfe974806c55aac8c602b541189b89f63ed844fede9edf92743c0f3b6d.jpg?q=82&amp;s=300x300&amp;t=crop&amp;f=webp" alt="thumbnail" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="display_flex_base gap_1_base alignItems_flexStart_base flexDirection_column_base">
+                                            <div className="display_flex_base color_neutral width_full_base alignItems_flexStart_base flexDirection_column_base gap_0.5_base">
+                                                <span className="lyhwr1h fontSize_200_base fontWeight_regular lineHeight_body.medium_base color_neutral overflow_hidden">맥북프로 MacBook Pro (Retina, 15-inch, Early 2013) A1398</span>
+                                                <span className="lyhwr1i fontSize_200_base fontWeight_semibold lineHeight_body.medium_base color_neutral fontWeight_bold">225,000원</span>
+                                            </div>
+                                            <div className="width_full_base">
+                                                <span className="_1pwsqmm0 _1pwsqmm1">
+                                                    <span className="lyhwr1j overflow_hidden">마곡동</span>
+                                                    <span className="_1pwsqmmd">
+                                                        <span>·</span>
+                                                        <time datetime="2025-08-10T23:06:07.217+09:00" class="lyhwr1j sprinkles_overflow_hidden__1byufe819">끌올 5분 전</time>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </main>

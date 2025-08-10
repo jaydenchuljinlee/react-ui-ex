@@ -54,6 +54,10 @@
     overflow: hidden;
 }
 
+.justifyContent_flexStart_base {
+    justify-content: flex-start;
+}
+
 @media screen and (min-width: 768px) {
     .display_none_small {
         display: none;

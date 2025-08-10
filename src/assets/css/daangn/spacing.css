@@ -282,6 +282,22 @@
 
 /* [margin] */
 
+.mr_0_base {
+    margin-right: 0;
+}
+
+.ml_0_base {
+    margin-left: 0;
+}
+
+.mt_0_base {
+    margin-top: 0;
+}
+
+.mb_0_base {
+    margin-bottom: 0;
+}
+
 .mr_1_base {
     margin-right: var(--carotene-spacing-1);
 }
@@ -434,7 +450,6 @@
     margin-bottom: var(--carotene-spacing-16);
 }
 
-
 @media screen and (min-width: 768px) {
     .mr_1\.5_small {
         margin-right: var(--carotene-spacing-1\.5);
@@ -448,8 +463,21 @@
 }
 
 @media screen and (min-width: 768px) {
+    .mt_5_small {
+        margin-top: var(--carotene-spacing-5);
+    }
+}
+
+
+@media screen and (min-width: 768px) {
     .mt_6_small {
         margin-top: var(--carotene-spacing-6);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .mt_0_medium {
+        margin-top: 0;
     }
 }
 

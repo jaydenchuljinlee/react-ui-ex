@@ -49,6 +49,10 @@
     width: 100%;
 }
 
+.height_full_base {
+    height: 100%;
+}
+
 .lineHeight_heading\.small_base {
     line-height: var(--carotene-heading-line-height-small);
 }
