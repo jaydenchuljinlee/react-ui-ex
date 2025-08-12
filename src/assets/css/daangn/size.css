@@ -20,11 +20,14 @@
     --carotene-heading-line-height-small: 1.375rem;
     --carotene-uniform-height-small: 1.5rem;
     --carotene-uniform-height-medium: 2rem;
+    --carotene-body-line-height-xsmall: 1.125rem;
     --carotene-body-line-height-small: 1.5rem;
     --carotene-body-line-height-medium: 1.5rem;
     --carotene-heading-line-height-medium: 1.75rem;
     --carotene-heading-line-height-large: 2rem;
     --carotene-heading-line-height-xlarge: 2.275rem;
+    
+
     
 }
 

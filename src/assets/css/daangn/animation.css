@@ -4,6 +4,7 @@
     --carotene-timing-function-exit: cubic-bezier(.35, 0, .95, .55);
     --carotene-duration-3: .15s;
     --carotene-duration-5: .25s;
+    --carotene-duration-7: .35s;
 }
 
 @keyframes carotene-enter {
