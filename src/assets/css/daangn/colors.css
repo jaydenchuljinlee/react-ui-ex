@@ -1,11 +1,13 @@
 :root {
-    
+    --carotene-color-palette-gray-600: #b0b3ba;
+
     --carotene-color-fg-on-solid: #ffffff;
     --carotene-color-fg-neutral-muted: #555d6d;
     --carotene-color-fg-neutral-inverted: #fff;
     --carotene-color-fg-neutral-subtle:#868b94;
     --carotene-color-fg-neutral: #2a3038;
     --carotene-color-fg-brand: #e14d00;
+    --carotene-color-fg-placeholder: var(--carotene-color-palette-gray-600);
 
     --carotene-color-palette-gray-200: #f3f4f5;
     --carotene-color-palette-gray-900: #2a3038;
@@ -20,6 +22,7 @@
     --carotene-color-bg-neutral-inverted: #2a3038;
     --carotene-color-bg-layer-default: #fff;
     --carotene-color-bg-layer-default-hover: #f7f8f9;
+    
 
     --carotene-color-bg-layer-elevated: #fff;
     --carotene-color-bg-overlay:#00000080;
