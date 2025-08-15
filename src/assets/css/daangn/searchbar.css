@@ -47,15 +47,6 @@
     border-radius: var(--carotene-radius-full);
 }
 
-.search_form {
-    height: 48px;
-    border: 1px solid var(--carotene-color-stroke-field);
-    display: flex;
-    align-items: center;
-    padding-left: var(--carotene-spacing-5);
-    border-radius: var(--carotene-radius-full);
-}
-
 .searchbar_category_btn_small {
     display: block;
 }
