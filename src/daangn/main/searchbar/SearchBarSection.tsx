@@ -82,7 +82,7 @@ const SearchBarSection = ({ popullarSearchWords, classes }: SearchbarProp) => {
                                                 role="radio"
                                                 aria-checked={item.name === value ? true : false}
                                                 className="searchbar_dialog_btn pb_3 pl_4_small pr_4_small pt_4_small pb_4_small justifyContent_spaceBetween_base alignItems_center_base pl_3_base pr_3_base pt_3_base pb_3_base full_width display_flex_base color_neutral">
-                                                <span className="lineHeight_body\.medium_base fontSize_200_base">{item.name}</span>
+                                                <span className="lineHeight_body.medium_base fontSize_200_base">{item.name}</span>
                                                 <svg className="searchbar_dialog_svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="18" height="18" ><g><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2424 3.55704C22.7631 3.96703 22.8529 4.72151 22.4429 5.24222L10.6321 20.2422C10.4172 20.5151 10.0945 20.6816 9.74756 20.6984C9.40059 20.7153 9.06333 20.581 8.82295 20.3302L1.63376 12.8302C1.17515 12.3518 1.19122 11.5922 1.66966 11.1336C2.1481 10.675 2.90773 10.691 3.36634 11.1695L9.60035 17.673L20.5572 3.75749C20.9672 3.23679 21.7217 3.14705 22.2424 3.55704Z" fill="currentColor"></path></g></svg>
                                             </button>
                                         ))

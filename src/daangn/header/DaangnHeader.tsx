@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
 import LocationDialog from '../main/LocationDialog';
 
 type Props = {
@@ -9,6 +11,89 @@ type Props = {
 const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) =>  {
     const headerBoxRef = useRef<HTMLDivElement>(null);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [realtyOpen, setRealtyOpen] = useState(false);
+    const realtyRef = useRef<HTMLDivElement>(null);
+    const portalRef = useRef<HTMLDivElement>(null);
+
+    // 🔒 락은 ref로 (동기 갱신)
+const lockRef = useRef(false);
+// requestAnimationFrame id 보관
+const rafRef = useRef<number | null>(null);
+// 잠깐 밖으로 나갔을 때 닫기 지연
+const closeTimerRef = useRef<number | null>(null);
+
+useEffect(() => {
+    if (!realtyOpen) return;
+  
+    function handleMouseMove(e: MouseEvent) {
+        if (lockRef.current) return;
+        lockRef.current = true;
+      
+        const triggerRect = realtyRef.current?.getBoundingClientRect();
+        const portalRect  = portalRef.current?.getBoundingClientRect();
+      
+        const x = e.clientX;
+        const y = e.clientY;
+      
+        const insideTrigger = triggerRect
+          ? x >= triggerRect.left && x <= triggerRect.right &&
+            y >= triggerRect.top  && y <= triggerRect.bottom
+          : false;
+      
+        const insidePortal = portalRect
+          ? x >= portalRect.left && x <= portalRect.right &&
+            y >= portalRect.top  && y <= portalRect.bottom
+          : false;
+      
+        const isInside = insideTrigger || insidePortal;
+      
+        if (isInside) {
+          cancelClose();
+        } else {
+          scheduleClose();
+        }
+      
+        unlockNextFrame();
+      }
+      
+  
+    function unlockNextFrame() {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        lockRef.current = false;
+      });
+    }
+  
+    function scheduleClose(delay = 100) {
+      if (closeTimerRef.current) return; // 이미 예약되어 있으면 중복 예약 금지
+      closeTimerRef.current = window.setTimeout(() => {
+        setRealtyOpen(false);
+        closeTimerRef.current = null;
+      }, delay);
+    }
+  
+    function cancelClose() {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
+    }
+  
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
+      lockRef.current = false;
+    };
+  }, [realtyOpen]);
+  
+      
+      
+      
 
     useEffect(() => {
         const handleScroll = () => {
@@ -39,6 +124,142 @@ const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) 
                                 <path fill="#FF6F0F" d="M116.493 46.963c-6.175 1.94-16.865 2.972-26.907 2.972V37.719h20.74v-9.096H78.465V59.6c17.424 0 32.637-2.1 39.06-4.088l-1.032-8.548ZM131.134 25h-11.106v35.61h11.106V49.448h8.958v-9.716h-8.958V25ZM110.506 60.527c-11.766 0-20.396 6.484-20.396 16 0 9.515 8.639 16 20.396 16 11.758 0 20.396-6.489 20.396-16 0-9.512-8.63-16-20.396-16Zm0 23.091c-5.303 0-9.282-2.544-9.282-7.108 0-4.563 3.979-7.103 9.282-7.103s9.282 2.544 9.282 7.103c0 4.56-3.975 7.108-9.282 7.108ZM161.72 65.25h-11.354v24.092h45.128v-9.536H161.72V65.251ZM194.086 27.971h-44.232v9.536h33.082c0 2.368.112 8-.972 14.4h-40.568v9.864h61.588v-9.848H192.01c1.472-8.088 1.892-14.392 2.076-23.952Z"></path>
                             </svg>
                         </a>
+                        {/* 메인 메뉴 */}
+                        
+                        
+                        <nav aria-label="메인 메뉴" data-orientation="horizontal" dir="ltr" className="position_relative_base main_menu_wrap">
+                            <div style={{position: 'relative'}}>
+                                <ul data-orientation="horizontal" className="main_menu_wrap_ul display_flex_base alignItems_center_base color_neutral" dir="ltr">
+                                    <li>
+                                        <a data-gtm="gnb_menu" href="#" className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3 display_inlineBlock_base" data-discover="true">중고거래</a>
+                                    </li>
+                                    <li>
+                                        <DropdownMenu.Root open={realtyOpen} onOpenChange={setRealtyOpen}>
+                                            <div
+                                                ref={realtyRef}
+                                                className="main_menu_wrap_ul_li_div"
+                                                onMouseEnter={() => setRealtyOpen(true)}
+                                                onMouseLeave={(e) => {
+                                                    console.log(e.relatedTarget, e.target);
+                                                    const target = e.target;
+
+                                                    // // target이 없거나 Node 타입이 아니면 그냥 닫음
+                                                    // if (!target || !(target instanceof Node)) {
+                                                    //     console.log('없음');
+                                                    //     setRealtyOpen(false);
+                                                    //     return;
+                                                    // }
+
+                                                    // if (realtyRef.current?.contains(target)) {
+                                                    //     console.log('realtyRef');
+                                                    //     setRealtyOpen(true)
+                                                    //     return;
+                                                    // }
+
+                                                    // // portal 안으로 이동했으면 닫지 않음
+                                                    // if (portalRef.current?.contains(target)) {
+                                                    //     console.log('portalRef');
+                                                    //     setRealtyOpen(true)
+                                                    //     return;
+                                                    // }
+
+                                                    // setRealtyOpen(false);
+  
+                                                }}
+                                                >
+                                                {/* 트리거 버튼 */}
+                                                <DropdownMenu.Trigger asChild>
+                                                    <button className="main_menu_wrap_ul_li_multi_div_btn display_flex_base alignItems_center_base cursor_pointer pr_2_base">
+                                                        <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#" data-discover="true">부동산</a>
+                                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
+                                                    </button>
+                                                </DropdownMenu.Trigger>
+
+                                                <DropdownMenu.Portal>
+                                                    {/* 드롭다운 메뉴 내용 */}
+                                                        <DropdownMenu.Content
+                                                            side="bottom"
+                                                            align="start"
+                                                            sideOffset={0}
+                                                            alignOffset={0}
+                                                            avoidCollisions={false}
+                                                            asChild>
+                                                            <div
+                                                                ref={portalRef}
+                                                                className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal"
+                                                                onMouseEnter={() => setRealtyOpen(true)}
+                                                                onMouseLeave={(e) => {
+                                                                    console.log(e.target);
+                                                                }}
+                                                                >
+                                                                <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">          
+                                                                    {/* 첫 번째 아이템 */}
+                                                                    <DropdownMenu.Item asChild>
+                                                                        <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                            <a href="/kr/realty/?in=마곡동-6052" data-discover="true">부동산 검색</a>
+                                                                        </li>
+                                                                    </DropdownMenu.Item>
+
+                                                                    {/* 두 번째 아이템 */}
+                                                                    <DropdownMenu.Item asChild>
+                                                                        <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                            <a href="#" target="_blank" className="display_flex_base alignItems_center_base">
+                                                                                <span>중개사 서비스</span>&nbsp;
+                                                                            </a>
+                                                                        </li>
+                                                                    </DropdownMenu.Item>
+
+                                                                    {/* 세 번째 아이템 */}
+                                                                    <DropdownMenu.Item asChild>
+                                                                        <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                        <a href="#" target="_blank" className="display_flex_base alignItems_center_base">
+                                                                            <span>중개사 이용 가이드</span>&nbsp;
+                                                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" class="sprinkles_color_neutralSubtle__1byufe82"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M20.0005 19C20.5505 19 21.0005 18.55 21.0005 18V4C21.0005 3.45 20.5505 3 20.0005 3H6.00055C5.45055 3 5.00055 3.45 5.00055 4C5.00055 4.55 5.45055 5 6.00055 5H17.6005L3.29055 19.29C2.90055 19.68 2.90055 20.31 3.29055 20.7C3.68055 21.09 4.31055 21.09 4.70055 20.7L19.0005 6.43V18C19.0005 18.55 19.4505 19 20.0005 19Z" fill="currentColor"></path></g></svg>
+                                                                        </a>
+                                                                        </li>
+                                                                    </DropdownMenu.Item>
+                                                                </ul>
+                                                            </div>
+                                                        </DropdownMenu.Content>
+                                                </DropdownMenu.Portal>
+                                            </div>
+                                        </DropdownMenu.Root>
+                                        {/* <div className="main_menu_wrap_ul_li_div">
+                                            <button id="radix-:r0:-trigger-radix-:r2:" data-state="closed" aria-expanded="false" aria-controls="radix-:r0:-content-radix-:r2:" className="_10h6zgx0 display_flex_base alignItems_center_base cursor_pointer pr_2_base" data-radix-collection-item="">
+                                                <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#" data-discover="true">부동산</a>
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
+                                            </button>
+                                        </div> */}
+                                    </li>
+                                    <li>                                        
+                                        <div className="main_menu_wrap_ul_li_div">
+                                            <button id="radix-:r0:-trigger-radix-:r3:" data-state="closed" aria-expanded="false" aria-controls="radix-:r0:-content-radix-:r3:" className="_10h6zgx0 display_flex_base alignItems_center_base cursor_pointer pr_2_base" data-radix-collection-item="">
+                                                <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#"  data-discover="true">중고차</a>
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="main_menu_wrap_ul_li_div">
+                                            <button id="radix-:r0:-trigger-radix-:r4:" data-state="closed" aria-expanded="false" aria-controls="radix-:r0:-content-radix-:r4:" className="_10h6zgx0 display_flex_base alignItems_center_base cursor_pointer pr_2_base" data-radix-collection-item="">
+                                                <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#" data-discover="true">알바</a>
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a data-gtm="gnb_menu" href="/kr/local-profile/?in=%EB%A7%88%EA%B3%A1%EB%8F%99-6052" className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3_base display_inlineBlock_base" data-discover="true">동네업체</a>
+                                    </li>
+                                    <li>
+                                        <a data-gtm="gnb_menu" href="/kr/community/?in=%EB%A7%88%EA%B3%A1%EB%8F%99-6052" className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3_base display_inlineBlock_base" data-discover="true">동네생활</a>
+                                    </li>
+                                    <li>
+                                        <a data-gtm="gnb_menu" href="/kr/group/?in=%EB%A7%88%EA%B3%A1%EB%8F%99-6052" className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3_base display_inlineBlock_base" data-discover="true">모임</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        
                         {/* 992px 이상일 경우 */}
                         <div className="display_flex_medium alignItems_center_base gap_4_base display_none_base ">
                             <button 
