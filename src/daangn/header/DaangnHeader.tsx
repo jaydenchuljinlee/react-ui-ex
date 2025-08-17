@@ -11,85 +11,167 @@ type Props = {
 const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) =>  {
     const headerBoxRef = useRef<HTMLDivElement>(null);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [realtyOpen, setRealtyOpen] = useState(false);
+    // 부동산용
     const realtyRef = useRef<HTMLDivElement>(null);
     const portalRef = useRef<HTMLDivElement>(null);
+    const [realtyOpen, setRealtyOpen] = useState(false);
+    const realtyLockRef = useRef(false);
+    const realtyRafRef = useRef<number | null>(null);
+    const realtyCloseTimerRef = useRef<number | null>(null);
 
-    // 🔒 락은 ref로 (동기 갱신)
-    const lockRef = useRef(false);
-    // requestAnimationFrame id 보관
-    const rafRef = useRef<number | null>(null);
-    // 잠깐 밖으로 나갔을 때 닫기 지연
-    const closeTimerRef = useRef<number | null>(null);
+    // 중고차용
+    const usedCarRef = useRef<HTMLDivElement>(null);
+    const usedCarContentRef = useRef<HTMLDivElement>(null);
+    const [usedCarOpen, setUsedCarOpen] = useState(false);
+    const carLockRef = useRef(false);
+    const carRafRef = useRef<number | null>(null);
+    const carCloseTimerRef = useRef<number | null>(null);
 
+    // 알바용
+    const partTimeRef = useRef<HTMLDivElement>(null);
+    const partTimeContentRef = useRef<HTMLDivElement>(null);
+    const [partTimeOpen, setPartTimeOpen] = useState(false);
+    const partTimeLockRef = useRef(false);
+    const partTimeRafRef = useRef<number | null>(null);
+    const partTimeCloseTimerRef = useRef<number | null>(null);
+
+    /** 공통 유틸 */
+    const pointInRect = (x: number, y: number, r?: DOMRect | null) =>
+    !!r && x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+
+    /** 부동산 메뉴 */
     useEffect(() => {
-        if (!realtyOpen) return;
-  
-        function handleMouseMove(e: MouseEvent) {
-            if (lockRef.current) return;
-            lockRef.current = true;
-        
-            const triggerRect = realtyRef.current?.getBoundingClientRect();
-            const portalRect  = portalRef.current?.getBoundingClientRect();
-        
-            const x = e.clientX;
-            const y = e.clientY;
-        
-            const insideTrigger = triggerRect
-            ? x >= triggerRect.left && x <= triggerRect.right &&
-                y >= triggerRect.top  && y <= triggerRect.bottom
-            : false;
-        
-            const insidePortal = portalRect
-            ? x >= portalRect.left && x <= portalRect.right &&
-                y >= portalRect.top  && y <= portalRect.bottom
-            : false;
-        
-            const isInside = insideTrigger || insidePortal;
-        
-            if (isInside) {
-            cancelClose();
-            } else {
-            scheduleClose();
-            }
-        
-            unlockNextFrame();
+    if (!realtyOpen) return;
+
+    function handle(e: MouseEvent) {
+        if (realtyLockRef.current) return;
+        realtyLockRef.current = true;
+
+        const x = e.clientX, y = e.clientY;
+        const inside =
+        pointInRect(x, y, realtyRef.current?.getBoundingClientRect()) ||
+        pointInRect(x, y, portalRef.current?.getBoundingClientRect());
+
+        if (inside) {
+        if (realtyCloseTimerRef.current) {
+            clearTimeout(realtyCloseTimerRef.current);
+            realtyCloseTimerRef.current = null;
         }
-      
-  
-        function unlockNextFrame() {
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        rafRef.current = requestAnimationFrame(() => {
-            lockRef.current = false;
-        });
-        }
-  
-        function scheduleClose(delay = 100) {
-        if (closeTimerRef.current) return; // 이미 예약되어 있으면 중복 예약 금지
-        closeTimerRef.current = window.setTimeout(() => {
+        } else {
+        if (!realtyCloseTimerRef.current) {
+            realtyCloseTimerRef.current = window.setTimeout(() => {
             setRealtyOpen(false);
-            closeTimerRef.current = null;
-        }, delay);
-        }
-  
-        function cancelClose() {
-        if (closeTimerRef.current) {
-            clearTimeout(closeTimerRef.current);
-            closeTimerRef.current = null;
+            realtyCloseTimerRef.current = null;
+            }, 250);
         }
         }
-  
-        document.addEventListener("mousemove", handleMouseMove);
-        return () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
-        if (closeTimerRef.current) {
-            clearTimeout(closeTimerRef.current);
-            closeTimerRef.current = null;
-        }
-        lockRef.current = false;
-        };
+
+        if (realtyRafRef.current) cancelAnimationFrame(realtyRafRef.current);
+        realtyRafRef.current = requestAnimationFrame(() => {
+        realtyLockRef.current = false;
+        });
+    }
+
+    document.addEventListener("mousemove", handle);
+    return () => {
+        document.removeEventListener("mousemove", handle);
+        if (realtyRafRef.current) cancelAnimationFrame(realtyRafRef.current);
+        if (realtyCloseTimerRef.current) clearTimeout(realtyCloseTimerRef.current);
+        realtyRafRef.current = null;
+        realtyCloseTimerRef.current = null;
+        realtyLockRef.current = false;
+    };
     }, [realtyOpen]);
+
+    /** 중고차 메뉴 */
+    useEffect(() => {
+    if (!usedCarOpen) return;
+
+    function handle(e: MouseEvent) {
+        if (carLockRef.current) return;
+        carLockRef.current = true;
+
+        const x = e.clientX, y = e.clientY;
+        const inside =
+        pointInRect(x, y, usedCarRef.current?.getBoundingClientRect()) ||
+        pointInRect(x, y, usedCarContentRef.current?.getBoundingClientRect());
+
+        if (inside) {
+        if (carCloseTimerRef.current) {
+            clearTimeout(carCloseTimerRef.current);
+            carCloseTimerRef.current = null;
+        }
+        } else {
+        if (!carCloseTimerRef.current) {
+            carCloseTimerRef.current = window.setTimeout(() => {
+            // ✅ 두 번째 메뉴는 자기 자신을 닫아야 함
+            setUsedCarOpen(false);
+            carCloseTimerRef.current = null;
+            }, 250);
+        }
+        }
+
+        if (carRafRef.current) cancelAnimationFrame(carRafRef.current);
+        carRafRef.current = requestAnimationFrame(() => {
+        carLockRef.current = false;
+        });
+    }
+
+    document.addEventListener("mousemove", handle);
+    return () => {
+        document.removeEventListener("mousemove", handle);
+        if (carRafRef.current) cancelAnimationFrame(carRafRef.current);
+        if (carCloseTimerRef.current) clearTimeout(carCloseTimerRef.current);
+        carRafRef.current = null;
+        carCloseTimerRef.current = null;
+        carLockRef.current = false;
+    };
+    }, [usedCarOpen]);
+
+    /** 알바 메뉴 */
+    useEffect(() => {
+    if (!partTimeOpen) return;
+
+    function handle(e: MouseEvent) {
+        if (partTimeLockRef.current) return;
+        partTimeLockRef.current = true;
+
+        const x = e.clientX, y = e.clientY;
+        const inside =
+        pointInRect(x, y, partTimeRef.current?.getBoundingClientRect()) ||
+        pointInRect(x, y, partTimeContentRef.current?.getBoundingClientRect());
+
+        if (inside) {
+        if (partTimeCloseTimerRef.current) {
+            clearTimeout(partTimeCloseTimerRef.current);
+            partTimeCloseTimerRef.current = null;
+        }
+        } else {
+        if (!partTimeCloseTimerRef.current) {
+            partTimeCloseTimerRef.current = window.setTimeout(() => {
+            // ✅ 두 번째 메뉴는 자기 자신을 닫아야 함
+            setPartTimeOpen(false);
+            partTimeCloseTimerRef.current = null;
+            }, 250);
+        }
+        }
+
+        if (partTimeRafRef.current) cancelAnimationFrame(partTimeRafRef.current);
+        partTimeRafRef.current = requestAnimationFrame(() => {
+        partTimeLockRef.current = false;
+        });
+    }
+
+    document.addEventListener("mousemove", handle);
+    return () => {
+        document.removeEventListener("mousemove", handle);
+        if (partTimeRafRef.current) cancelAnimationFrame(partTimeRafRef.current);
+        if (partTimeCloseTimerRef.current) clearTimeout(partTimeCloseTimerRef.current);
+        partTimeRafRef.current = null;
+        partTimeCloseTimerRef.current = null;
+        partTimeLockRef.current = false;
+    };
+    }, [partTimeOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -190,28 +272,130 @@ const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) 
                                                 </DropdownMenu.Content>
                                             </div>
                                         </DropdownMenu.Root>
-                                        {/* <div className="main_menu_wrap_ul_li_div">
-                                            <button id="radix-:r0:-trigger-radix-:r2:" data-state="closed" aria-expanded="false" aria-controls="radix-:r0:-content-radix-:r2:" className="_10h6zgx0 display_flex_base alignItems_center_base cursor_pointer pr_2_base" data-radix-collection-item="">
-                                                <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#" data-discover="true">부동산</a>
-                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
-                                            </button>
-                                        </div> */}
-                                    </li>
-                                    <li>                                        
-                                        <div className="main_menu_wrap_ul_li_div">
-                                            <button id="radix-:r0:-trigger-radix-:r3:" data-state="closed" aria-expanded="false" aria-controls="radix-:r0:-content-radix-:r3:" className="_10h6zgx0 display_flex_base alignItems_center_base cursor_pointer pr_2_base" data-radix-collection-item="">
-                                                <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#"  data-discover="true">중고차</a>
-                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
-                                            </button>
-                                        </div>
                                     </li>
                                     <li>
-                                        <div className="main_menu_wrap_ul_li_div">
-                                            <button id="radix-:r0:-trigger-radix-:r4:" data-state="closed" aria-expanded="false" aria-controls="radix-:r0:-content-radix-:r4:" className="_10h6zgx0 display_flex_base alignItems_center_base cursor_pointer pr_2_base" data-radix-collection-item="">
-                                                <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#" data-discover="true">알바</a>
-                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
-                                            </button>
-                                        </div>
+                                        <DropdownMenu.Root open={usedCarOpen} onOpenChange={setUsedCarOpen}>
+                                            <div
+                                                ref={usedCarRef}
+                                                className="main_menu_wrap_ul_li_div"
+                                                onMouseEnter={() => setUsedCarOpen(true)}>
+                                                
+                                                {/* 트리거 버튼 */}
+                                                <DropdownMenu.Trigger asChild>
+                                                    <button className="main_menu_wrap_ul_li_multi_div_btn display_flex_base alignItems_center_base cursor_pointer pr_2_base">
+                                                        <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#"  data-discover="true">중고차</a>
+                                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
+                                                    </button>
+                                                </DropdownMenu.Trigger>
+
+                                                <DropdownMenu.Content
+                                                    side="bottom"
+                                                    align="start"
+                                                    sideOffset={0}
+                                                    alignOffset={0}
+                                                    avoidCollisions={false}
+                                                    asChild>
+                                                    <div
+                                                        ref={usedCarContentRef}
+                                                        className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal"
+                                                        onMouseEnter={() => setUsedCarOpen(true)}
+                                                        onMouseLeave={(e) => {
+                                                            console.log(e.target);
+                                                        }}
+                                                        >
+                                                        <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">          
+                                                            {/* 첫 번째 아이템 */}
+                                                            <DropdownMenu.Item asChild>
+                                                                <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                    <a href="/kr/realty/?in=마곡동-6052" data-discover="true">부동산 검색</a>
+                                                                </li>
+                                                            </DropdownMenu.Item>
+
+                                                            {/* 두 번째 아이템 */}
+                                                            <DropdownMenu.Item asChild>
+                                                                <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                    <a href="#" target="_blank" className="display_flex_base alignItems_center_base">
+                                                                        <span>중개사 서비스</span>&nbsp;
+                                                                    </a>
+                                                                </li>
+                                                            </DropdownMenu.Item>
+
+                                                            {/* 세 번째 아이템 */}
+                                                            <DropdownMenu.Item asChild>
+                                                                <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                <a href="#" target="_blank" className="display_flex_base alignItems_center_base">
+                                                                    <span>중개사 이용 가이드</span>&nbsp;
+                                                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" className="color_neutralSubtle"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M20.0005 19C20.5505 19 21.0005 18.55 21.0005 18V4C21.0005 3.45 20.5505 3 20.0005 3H6.00055C5.45055 3 5.00055 3.45 5.00055 4C5.00055 4.55 5.45055 5 6.00055 5H17.6005L3.29055 19.29C2.90055 19.68 2.90055 20.31 3.29055 20.7C3.68055 21.09 4.31055 21.09 4.70055 20.7L19.0005 6.43V18C19.0005 18.55 19.4505 19 20.0005 19Z" fill="currentColor"></path></g></svg>
+                                                                </a>
+                                                                </li>
+                                                            </DropdownMenu.Item>
+                                                        </ul>
+                                                    </div>
+                                                </DropdownMenu.Content>
+                                            </div>
+                                        </DropdownMenu.Root>
+                                    </li>
+                                    <li>
+                                        <DropdownMenu.Root open={partTimeOpen} onOpenChange={setPartTimeOpen}>
+                                            <div
+                                                ref={partTimeRef}
+                                                className="main_menu_wrap_ul_li_div"
+                                                onMouseEnter={() => setPartTimeOpen(true)}>
+                                                
+                                                {/* 트리거 버튼 */}
+                                                <DropdownMenu.Trigger asChild>
+                                                    <button className="main_menu_wrap_ul_li_multi_div_btn display_flex_base alignItems_center_base cursor_pointer pr_2_base">
+                                                        <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href="#" data-discover="true">알바</a>
+                                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
+                                                    </button>
+                                                </DropdownMenu.Trigger>
+
+                                                <DropdownMenu.Content
+                                                    side="bottom"
+                                                    align="start"
+                                                    sideOffset={0}
+                                                    alignOffset={0}
+                                                    avoidCollisions={false}
+                                                    asChild>
+                                                    <div
+                                                        ref={partTimeContentRef}
+                                                        className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal"
+                                                        onMouseEnter={() => setPartTimeOpen(true)}
+                                                        onMouseLeave={(e) => {
+                                                            console.log(e.target);
+                                                        }}
+                                                        >
+                                                        <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">          
+                                                            {/* 첫 번째 아이템 */}
+                                                            <DropdownMenu.Item asChild>
+                                                                <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                    <a href="/kr/realty/?in=마곡동-6052" data-discover="true">부동산 검색</a>
+                                                                </li>
+                                                            </DropdownMenu.Item>
+
+                                                            {/* 두 번째 아이템 */}
+                                                            <DropdownMenu.Item asChild>
+                                                                <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                    <a href="#" target="_blank" className="display_flex_base alignItems_center_base">
+                                                                        <span>중개사 서비스</span>&nbsp;
+                                                                    </a>
+                                                                </li>
+                                                            </DropdownMenu.Item>
+
+                                                            {/* 세 번째 아이템 */}
+                                                            <DropdownMenu.Item asChild>
+                                                                <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                                                <a href="#" target="_blank" className="display_flex_base alignItems_center_base">
+                                                                    <span>중개사 이용 가이드</span>&nbsp;
+                                                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="14" height="14" class="sprinkles_color_neutralSubtle__1byufe82"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M20.0005 19C20.5505 19 21.0005 18.55 21.0005 18V4C21.0005 3.45 20.5505 3 20.0005 3H6.00055C5.45055 3 5.00055 3.45 5.00055 4C5.00055 4.55 5.45055 5 6.00055 5H17.6005L3.29055 19.29C2.90055 19.68 2.90055 20.31 3.29055 20.7C3.68055 21.09 4.31055 21.09 4.70055 20.7L19.0005 6.43V18C19.0005 18.55 19.4505 19 20.0005 19Z" fill="currentColor"></path></g></svg>
+                                                                </a>
+                                                                </li>
+                                                            </DropdownMenu.Item>
+                                                        </ul>
+                                                    </div>
+                                                </DropdownMenu.Content>
+                                            </div>
+                                        </DropdownMenu.Root>
                                     </li>
                                     <li>
                                         <a data-gtm="gnb_menu" href="/kr/local-profile/?in=%EB%A7%88%EA%B3%A1%EB%8F%99-6052" className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3_base display_inlineBlock_base" data-discover="true">동네업체</a>

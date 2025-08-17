@@ -131,6 +131,14 @@
 
   }
 
+  .main_menu_wrap_ul:has(.main_menu_wrap_ul_li_multi_div_btn[data-state=open]) {
+    color: var(--carotene-color-fg-neutral-subtle);
+}
+
+.main_menu_wrap_ul:has(.main_menu_wrap_ul_li_multi_div_btn:hover) {
+  color: var(--carotene-color-fg-neutral-subtle);
+}
+
   .main_menu_wrap_ul_li_multi_div_btn[data-state=open] {
     color: var(--carotene-color-fg-neutral);
   }
