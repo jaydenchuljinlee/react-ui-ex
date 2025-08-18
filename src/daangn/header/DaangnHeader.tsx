@@ -47,7 +47,6 @@ const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) 
                         </a>
                         {/* 메인 메뉴 */}
                         
-                        
                         <nav aria-label="메인 메뉴" data-orientation="horizontal" dir="ltr" className="position_relative_base main_menu_wrap">
                             <div style={{position: 'relative'}}>
                                 <ul data-orientation="horizontal" className="main_menu_wrap_ul display_flex_base alignItems_center_base color_neutral" dir="ltr">
@@ -57,7 +56,7 @@ const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) 
                                             <CustomRadixDropdown
                                                 category={c}
                                                 wrapperClassName="main_menu_wrap_ul_li_div"
-                                                closeDelay={300} />
+                                                closeDelay={100} />
                                         </li>
                                         );
                                     })}

@@ -154,6 +154,17 @@
     top: 100%;
   }
 
+  .main_menu_wrap_ul_li_multi_div_ul_li:hover {
+    background-color: var(--carotene-color-bg-layer-elevated-hover);
+  }
+
+  .main_menu_wrap_ul_li_multi_div_ul_li {
+    font-size: var(--carotene-font-size-100);
+    font-weight: var(--carotene-font-weight-regular);
+    line-height: var(--carotene-body-line-height-small);
+  }
+
+
   .main_menu_wrap_ul_li_multi_div[data-stae=open] {
     --carotene-enter-translate-x: 0;
     --carotene-enter-translate-y: -10%;
@@ -168,3 +179,17 @@
     box-shadow: 0 2px 12px #0000001a;
     white-space: nowrap;
   }
+
+  /* Radix Dropdown Item 기본 포커스 링 제거 */
+.main_menu_wrap_ul_li_multi_div_btn:focus,
+.main_menu_wrap_ul_li_multi_div_btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* 내부 a에 추가적으로 적용 */
+.main_menu_wrap_ul_li_multi_div_ul_li:focus,
+.main_menu_wrap_ul_li_multi_div_ul_li:focus-visible {
+    outline: none;
+    box-shadow: none;
+}

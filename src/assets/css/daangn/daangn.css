@@ -195,3 +195,18 @@ a {
 input::-webkit-input-placeholder {
   color: var(--carotene-color-fg-placeholder);
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:focus, a:focus-visible {
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}

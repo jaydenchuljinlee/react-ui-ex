@@ -38,7 +38,7 @@ const InlineSvg = ({ svg, className }: { svg?: string; className?: string }) => 
 export default function CustomRadixDropdown({
     category,
     wrapperClassName,
-    closeDelay = 250,
+    closeDelay = 150,
     open: openProp,
     onOpenChange: onOpenChangeProp,
   }: CustomRadixDropdownProps) {
@@ -84,7 +84,8 @@ export default function CustomRadixDropdown({
   
         const inside =
           pointInRect(x, y, triggerRect) || pointInRect(x, y, contentRect);
-  
+          
+
         if (inside) cancelClose();
         else scheduleClose();
   
@@ -122,7 +123,10 @@ export default function CustomRadixDropdown({
     }, [open, closeDelay]); // setOpen은 안정적(동일 ref)이라 deps 불필요
   
     return (
-      <DropdownMenu.Root open={open} onOpenChange={setOpen}>
+      <DropdownMenu.Root open={open} onOpenChange={(next) => {
+        if (next) setOpen(true);
+        // next === false 는 무시
+      }}>
         <div
           ref={triggerWrapRef}
           className={wrapperClassName}
@@ -155,7 +159,7 @@ export default function CustomRadixDropdown({
                     <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
                         {category.child!.map((c) => (
                             <DropdownMenu.Item asChild key={c.key}>
-                            <li className="pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                            <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
                                 <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
                                 <span>{c.name}</span>
                                 {c.svg && <InlineSvg svg={c.svg} />}
