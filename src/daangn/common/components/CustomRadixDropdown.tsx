@@ -124,40 +124,57 @@ export default function CustomRadixDropdown({
             <button className="main_menu_wrap_ul_li_multi_div_btn display_flex_base alignItems_center_base pr_2_base" >
                 <a data-gtm="gnb_menu" className="_10h6zgx8 main_menu_wrap_ul_a pt_2_base pb_2_base display_flex_base alignItems_center_base gap_1_base pl_3_base pr_1_base" href={category.link} data-discover="true">{category.name}</a>
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-seed-icon="true" data-seed-icon-version="0.0.23" width="24" height="24" aria-hidden="true" className="color_neutralSubtle width_3_base height_3_base _10h6zgx9"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3991 6.93106C20.9192 6.47398 20.1596 6.49248 19.7025 6.97238L11.9995 15.06L4.29762 6.97244C3.84057 6.49251 3.081 6.47396 2.60107 6.93101C2.12114 7.38805 2.10258 8.14762 2.55963 8.62756L11.1305 17.6276C11.357 17.8654 11.671 18 11.9994 18C12.3278 18 12.6419 17.8654 12.8684 17.6276L21.4404 8.62762C21.8975 8.14771 21.879 7.38814 21.3991 6.93106Z" fill="currentColor"></path></g></svg>
-                {/* <InlineSvg svg={category.svg} /> */}
+                
             </button>
+            
           </DropdownMenu.Trigger>
-  
+
+          <div
+            ref={contentWrapRef}
+            className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal">
+            
+            <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
+                {category.child!.map((c) => (
+                    <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                        <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
+                        <span>{c.name}</span>
+                        {c.svg && <InlineSvg svg={c.svg} />}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
           {/* 내부에서 Content asChild 캡슐화 */}
-          <DropdownMenu.Portal>
+          {/* <DropdownMenu.Portal>
             <DropdownMenu.Content
-              forceMount
-              side="bottom"
+                //forceMount
+                side="bottom"
                 align="start"
                 sideOffset={0}
                 alignOffset={0}
                 avoidCollisions={false}
-              asChild
-            >
-                <div
-                    ref={contentWrapRef}
-                    className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal">
-                    
-                    <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
-                        {category.child!.map((c) => (
-                            <DropdownMenu.Item asChild key={c.key}>
-                            <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
-                                <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
-                                <span>{c.name}</span>
-                                {c.svg && <InlineSvg svg={c.svg} />}
-                                </a>
-                            </li>
-                            </DropdownMenu.Item>
-                        ))}
-                    </ul>
-                </div>
-            </DropdownMenu.Content>
-          </DropdownMenu.Portal>
+                asChild
+                >
+                    <div
+                        ref={contentWrapRef}
+                        className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal">
+                        
+                        <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
+                            {category.child!.map((c) => (
+                                <DropdownMenu.Item asChild key={c.key}>
+                                <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                    <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
+                                    <span>{c.name}</span>
+                                    {c.svg && <InlineSvg svg={c.svg} />}
+                                    </a>
+                                </li>
+                                </DropdownMenu.Item>
+                            ))}
+                        </ul>
+                    </div>
+                </DropdownMenu.Content>
+          </DropdownMenu.Portal> */}
         </div>
       </DropdownMenu.Root>
     );
