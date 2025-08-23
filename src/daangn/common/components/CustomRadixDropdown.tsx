@@ -129,52 +129,23 @@ export default function CustomRadixDropdown({
             
           </DropdownMenu.Trigger>
 
-          <div
-            ref={contentWrapRef}
-            className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal">
-            
-            <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
-                {category.child!.map((c) => (
-                    <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
-                        <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
-                        <span>{c.name}</span>
-                        {c.svg && <InlineSvg svg={c.svg} />}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-          {/* 내부에서 Content asChild 캡슐화 */}
-          {/* <DropdownMenu.Portal>
-            <DropdownMenu.Content
-                //forceMount
-                side="bottom"
-                align="start"
-                sideOffset={0}
-                alignOffset={0}
-                avoidCollisions={false}
-                asChild
-                >
-                    <div
-                        ref={contentWrapRef}
-                        className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal">
-                        
-                        <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
-                            {category.child!.map((c) => (
-                                <DropdownMenu.Item asChild key={c.key}>
-                                <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
-                                    <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
-                                    <span>{c.name}</span>
-                                    {c.svg && <InlineSvg svg={c.svg} />}
-                                    </a>
-                                </li>
-                                </DropdownMenu.Item>
-                            ))}
-                        </ul>
-                    </div>
-                </DropdownMenu.Content>
-          </DropdownMenu.Portal> */}
+            {open && (
+                <div
+                    ref={contentWrapRef}
+                    className="main_menu_wrap_ul_li_multi_div position_absolute_base zIndex_modal">
+                    
+                    <ul className="main_menu_wrap_ul_li_multi_div_ul pt_1.5_base pb_1.5_base pl_1_base pr_1_base display_flex_base flexDirection_column_base borderRadius_1.5_base backgroundColor_layerElevated">
+                        {category.child!.map((c) => (
+                            <li className="main_menu_wrap_ul_li_multi_div_ul_li pt_2_base pb_2_base pl_2_base pr_2_base display_flex_base alignItems_center_base gap_1_base borderRadius_1_base color_neutral">
+                                <a href={c.link} className="display_flex_base alignItems_center_base gap_1_base">
+                                <span>{c.name}</span>
+                                {c.svg && <InlineSvg svg={c.svg} />}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
       </DropdownMenu.Root>
     );
