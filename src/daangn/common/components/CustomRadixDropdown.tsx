@@ -47,7 +47,7 @@ export default function CustomRadixDropdown({
     // child 없으면 드롭다운 안 쓰고 일반 링크
     if (!hasChild) {
       return (
-        <a data-gtm="gnb_menu" href={category.link} className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3 display_inlineBlock_base" data-discover="true">{category.name}</a>
+        <a data-gtm="gnb_menu" href={category.link} className="main_menu_wrap_ul_a_single main_menu_wrap_ul_a pt_2_base pb_2_base pl_3_base pr_3_base display_inlineBlock_base" data-discover="true">{category.name}</a>
       );
     }
   
