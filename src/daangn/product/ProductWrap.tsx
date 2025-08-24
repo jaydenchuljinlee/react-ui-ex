@@ -17,7 +17,7 @@ const ProductWrap = () => {
     return (
         <div className="main_body">
             <DaangnHeader ref={headerRef} searchBtnFlag={searchBtnFlag} />
-            <SearchBarSection popullarSearchWords={popullarSearchWords} classes='wv2v230 pl_20_large pr_20_large' isMain={false} />
+            <SearchBarSection popullarSearchWords={popullarSearchWords} classes='wv2v230 pl_4_base pl_10_small pl_16_medium pl_20_large pr_4_base pr_10_small pr_16_medium pr_20_large backgroundColor_layerDefault width_full_base' isMain={false} />
 
             <main className="prdouct_main_warp">
                 <div className="wv2v230 pl_4_base pl_10_small pl_16_medium pl_20_large pr_4_base pr_10_small pr_16_medium pr_20_large backgroundColor_layerDefault width_full_base">
