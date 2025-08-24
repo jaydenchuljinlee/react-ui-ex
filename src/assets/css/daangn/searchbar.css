@@ -18,6 +18,24 @@
     border: none;
 }
 
+.search_btn_product {
+    font-size: 14px;
+    height: 42px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--carotene-color-bg-neutral);
+    border: none;
+    border-radius: 100px;
+    transition: background-color .15s;
+}
+
+.search_btn_product_icon_svg {
+    height: 18px;
+    width: 18px;
+}
+
 .search_btn_font {
     display: block;
     overflow: hidden;
