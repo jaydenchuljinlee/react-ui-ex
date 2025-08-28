@@ -18,6 +18,24 @@
     border: none;
 }
 
+.search_btn_product {
+    font-size: 14px;
+    height: 42px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--carotene-color-bg-neutral);
+    border: none;
+    border-radius: 100px;
+    transition: background-color .15s;
+}
+
+.search_btn_product_icon_svg {
+    height: 18px;
+    width: 18px;
+}
+
 .search_btn_font {
     display: block;
     overflow: hidden;
@@ -36,15 +54,6 @@
 .search_btn_svg {
     width: 18px;
     height: 18px;
-}
-
-.search_form {
-    height: 48px;
-    border: 1px solid var(--carotene-color-stroke-field);
-    display: flex;
-    align-items: center;
-    padding-left: var(--carotene-spacing-5);
-    border-radius: var(--carotene-radius-full);
 }
 
 .search_form {

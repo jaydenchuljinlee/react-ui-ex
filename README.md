@@ -19,4 +19,7 @@ npm run dev
 - react-router-dom
 - @radix-ui/react-dropdown-menu
 - @radix-ui/react-dialog
+- @radix-ui/react-checkbox
+- @radix-ui/react-icons
+- @radix-ui/react-radio-group
 ```

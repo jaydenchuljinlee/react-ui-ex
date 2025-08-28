@@ -7,6 +7,7 @@
 --carotene-spacing-3: 0.75rem;
 --carotene-spacing-4: 1rem;
 --carotene-spacing-5: 1.25rem;
+--carotene-spacing-6: 1.5rem;
 --carotene-spacing-7: 1.75rem;
 --carotene-spacing-8: 2rem;
 --carotene-spacing-10: 2.5rem;
@@ -25,8 +26,6 @@
         margin-right: var(--carotene-spacing-3);
     }
 }
-
-
 
 @media screen and (min-width: 768px) {
     .mb_12_small {
@@ -140,7 +139,7 @@
 }
 
 .pl_3_base {
-    padding-right: var(--carotene-spacing-3);
+    padding-left: var(--carotene-spacing-3);
 }
 
 .pb_3_base {
@@ -283,6 +282,22 @@
 
 /* [margin] */
 
+.mr_0_base {
+    margin-right: 0;
+}
+
+.ml_0_base {
+    margin-left: 0;
+}
+
+.mt_0_base {
+    margin-top: 0;
+}
+
+.mb_0_base {
+    margin-bottom: 0;
+}
+
 .mr_1_base {
     margin-right: var(--carotene-spacing-1);
 }
@@ -297,6 +312,38 @@
 
 .mb_1_base {
     margin-bottom: var(--carotene-spacing-1);
+}
+
+.mr_1\.5_base {
+    margin-right: var(--carotene-spacing-1\.5);
+}
+
+.ml_1\.5_base {
+    margin-left: var(--carotene-spacing-1\.5);
+}
+
+.mt_1\.5_base {
+    margin-top: var(--carotene-spacing-1\.5);
+}
+
+.mb_1\.5_base {
+    margin-bottom: var(--carotene-spacing-1\.5);
+}
+
+.mr_2_base {
+    margin-right: var(--carotene-spacing-2);
+}
+
+.ml_2_base {
+    margin-left: var(--carotene-spacing-2);
+}
+
+.mt_2_base {
+    margin-top: var(--carotene-spacing-2);
+}
+
+.mb_2_base {
+    margin-bottom: var(--carotene-spacing-2);
 }
 
 .mr_3_base {
@@ -323,14 +370,120 @@
     margin-right: var(--carotene-spacing-4);
 }
 
+.mr_5_base {
+    margin-right: var(--carotene-spacing-5);
+}
+
+.ml_5_base {
+    margin-left: var(--carotene-spacing-5);
+}
+
+.mt_5_base {
+    margin-top: var(--carotene-spacing-5);
+}
+
+.mb_5_base {
+    margin-bottom: var(--carotene-spacing-5);
+}
+
+.mr_6_base {
+    margin-right: var(--carotene-spacing-6);
+}
+
+.ml_6_base {
+    margin-left: var(--carotene-spacing-6);
+}
+
+.mt_6_base {
+    margin-top: var(--carotene-spacing-6);
+}
+
+.mb_6_base {
+    margin-bottom: var(--carotene-spacing-6);
+}
+
+.mr_7_base {
+    margin-right: var(--carotene-spacing-7);
+}
+
+.ml_7_base {
+    margin-left: var(--carotene-spacing-7);
+}
+
 .mt_7_base {
     margin-top: var(--carotene-spacing-7);
 }
 
+.mb_7_base {
+    margin-bottom: var(--carotene-spacing-7);
+}
+
+.mr_10_base {
+    margin-right: var(--carotene-spacing-10);
+}
+
+.ml_10_base {
+    margin-left: var(--carotene-spacing-10);
+}
+
+.mt_10_base {
+    margin-top: var(--carotene-spacing-10);
+}
+
+.mb_10_base {
+    margin-bottom: var(--carotene-spacing-10);
+}
+
+.mr_16_base {
+    margin-right: var(--carotene-spacing-16);
+}
+
+.ml_16_base {
+    margin-left: var(--carotene-spacing-16);
+}
+
+.mt_16_base {
+    margin-top: var(--carotene-spacing-16);
+}
+
+.mb_16_base {
+    margin-bottom: var(--carotene-spacing-16);
+}
 
 @media screen and (min-width: 768px) {
     .mr_1\.5_small {
         margin-right: var(--carotene-spacing-1\.5);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mt_2_small {
+        margin-top: var(--carotene-spacing-2);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mt_5_small {
+        margin-top: var(--carotene-spacing-5);
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .mt_6_small {
+        margin-top: var(--carotene-spacing-6);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .mt_0_medium {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .mt_7_medium {
+        margin-top: var(--carotene-spacing-7);
     }
 }
 
@@ -346,12 +499,32 @@
     }
 }
 
+@media screen and (min-width: 992px) {
+    .mb_20_medium {
+        margin-bottom: var(--carotene-spacing-20);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .mb_32_large {
+        margin-bottom: var(--carotene-spacing-32);
+    }
+}
+
+.gap_0_base {
+    gap: 0;
+}
+
 .gap_0\.5_base {
     gap: var(--carotene-spacing-0\.5);
 }
 
 .gap_1_base {
     gap: var(--carotene-spacing-1);
+}
+
+.gap_1\.5_base {
+    gap: var(--carotene-spacing-1\.5);
 }
 
 .gap_3_base {
@@ -364,6 +537,12 @@
 
 .gap_8_base {
     gap: var(--carotene-spacing-8);
+}
+
+@media screen and (min-width: 992px) {
+    .gap_6_medium {
+        gap: var(--carotene-spacing-6);
+    }
 }
 
 

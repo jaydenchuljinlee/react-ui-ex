@@ -17,16 +17,27 @@
     --carotene-size-20: 5rem;
     --carotene-size-24: 6rem;
     --carotene-size-32: 8rem;
+    --carotene-heading-line-height-small: 1.375rem;
     --carotene-uniform-height-small: 1.5rem;
-    --carotene-body-line-height-small: 1.5rem;
-    --carotene-heading-line-height-medium: 1.75rem;
     --carotene-uniform-height-medium: 2rem;
+    --carotene-body-line-height-xsmall: 1.125rem;
+    --carotene-body-line-height-small: 1.5rem;
+    --carotene-body-line-height-medium: 1.5rem;
+    --carotene-heading-line-height-medium: 1.75rem;
+    --carotene-heading-line-height-large: 2rem;
+    --carotene-heading-line-height-xlarge: 2.275rem;
+    
+
     
 }
 
 .wv2v230 {
     max-width: 1400px;
     margin-inline: auto;
+}
+
+.width_3_base {
+    width: var(--carotene-size-3);
 }
 
 .width_5_base {
@@ -43,6 +54,26 @@
 
 .width_full_base {
     width: 100%;
+}
+
+.height_3_base {
+    height: var(--carotene-size-3);
+}
+
+.height_full_base {
+    height: 100%;
+}
+
+.lineHeight_heading\.small_base {
+    line-height: var(--carotene-heading-line-height-small);
+}
+
+.lineHeight_heading\.medium_base {
+    line-height: var(--carotene-heading-line-height-medium);
+}
+
+.lineHeight_heading\.large_base {
+    line-height: var(--carotene-heading-line-height-large);
 }
 
 .lineHeight_body\.medium_base {
@@ -62,3 +93,10 @@
         width: var(--carotene-size-8);
     }
 }
+
+@media screen and (min-width: 992px) {
+    .prinkles_lineHeight_heading\.xlarge_medium {
+        line-height: var(--carotene-heading-line-height-xlarge);
+    }
+}
+

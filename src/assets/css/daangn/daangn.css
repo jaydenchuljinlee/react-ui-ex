@@ -10,6 +10,7 @@
 @import './main.css';
 @import './locatio-dialog.css';
 @import './header.css';
+@import './product_wrap.css';
 
 /* @import './searchbar.css';
 @import './categoryview.css'; */
@@ -50,10 +51,6 @@
 
 .full-width {
   width: 100%;
-}
-
-.cursor_pointer {
-  cursor: pointer;
 }
 
 button, input:where([type=button]), input:where([type=reset]), input:where([type=submit]) {
@@ -184,4 +181,28 @@ h2 {
 a {
   color: inherit;
   text-decoration: inherit;
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+input::-webkit-input-placeholder {
+  color: var(--carotene-color-fg-placeholder);
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:focus, a:focus-visible {
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
 }

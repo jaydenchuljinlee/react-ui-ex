@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+
+import CustomRadixDropdown from "../common/components/CustomRadixDropdown";
 import LocationDialog from '../main/LocationDialog';
+import { categoryList } from '../main/data/category';
+
 
 type Props = {
     searchBtnFlag: boolean;
@@ -7,6 +11,8 @@ type Props = {
 
 
 const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) =>  {
+    const categories = categoryList();
+    
     const headerBoxRef = useRef<HTMLDivElement>(null);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -39,6 +45,25 @@ const Header = React.forwardRef<HTMLDivElement, Props>(({ searchBtnFlag }, ref) 
                                 <path fill="#FF6F0F" d="M116.493 46.963c-6.175 1.94-16.865 2.972-26.907 2.972V37.719h20.74v-9.096H78.465V59.6c17.424 0 32.637-2.1 39.06-4.088l-1.032-8.548ZM131.134 25h-11.106v35.61h11.106V49.448h8.958v-9.716h-8.958V25ZM110.506 60.527c-11.766 0-20.396 6.484-20.396 16 0 9.515 8.639 16 20.396 16 11.758 0 20.396-6.489 20.396-16 0-9.512-8.63-16-20.396-16Zm0 23.091c-5.303 0-9.282-2.544-9.282-7.108 0-4.563 3.979-7.103 9.282-7.103s9.282 2.544 9.282 7.103c0 4.56-3.975 7.108-9.282 7.108ZM161.72 65.25h-11.354v24.092h45.128v-9.536H161.72V65.251ZM194.086 27.971h-44.232v9.536h33.082c0 2.368.112 8-.972 14.4h-40.568v9.864h61.588v-9.848H192.01c1.472-8.088 1.892-14.392 2.076-23.952Z"></path>
                             </svg>
                         </a>
+                        {/* 메인 메뉴 */}
+                        
+                        <nav aria-label="메인 메뉴" data-orientation="horizontal" dir="ltr" className="position_relative_base main_menu_wrap">
+                            <div style={{position: 'relative'}}>
+                                <ul data-orientation="horizontal" className="main_menu_wrap_ul display_flex_base alignItems_center_base color_neutral" dir="ltr">
+                                    {categories.map(c => {
+                                        return (
+                                            <li key={c.key}>
+                                            <CustomRadixDropdown
+                                                category={c}
+                                                wrapperClassName="main_menu_wrap_ul_li_div"
+                                                closeDelay={100} />
+                                        </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        </nav>
+                        
                         {/* 992px 이상일 경우 */}
                         <div className="display_flex_medium alignItems_center_base gap_4_base display_none_base ">
                             <button 
